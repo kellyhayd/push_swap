@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 12:33:14 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/01 12:18:29 by krocha-h         ###   ########.fr       */
+/*   Created: 2024/03/01 12:45:31 by krocha-h          #+#    #+#             */
+/*   Updated: 2024/03/01 12:46:43 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-/* Tests if c is a decimal digit */
-int	ft_isdigit(const char c)
+void	ft_error(char *msg)
 {
-	return (c >= '0' && c <= '9');
+	ft_putstr_fd(msg, 2);
+	exit(EXIT_FAILURE);
 }

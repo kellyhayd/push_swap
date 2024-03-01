@@ -31,6 +31,7 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_isascii.c\
 		ft_isdigit.c\
 		ft_isprint.c\
+		ft_error.c \
 		ft_itoa.c\
 		ft_memchr.c\
 		ft_memcmp.c\

@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:05:25 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/02/19 10:49:15 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:46:05 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
-int		ft_isdigit(int c);
+int		ft_isdigit(const char c);
 int		ft_isprint(int c);
+void	ft_error(char *msg);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
