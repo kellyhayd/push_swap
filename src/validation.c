@@ -1,25 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/01 14:27:34 by krocha-h         ###   ########.fr       */
+/*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
+/*   Updated: 2024/03/01 15:13:12 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_error(char *msg)
 {
-	t_stack	**stack_a;
+	ft_putstr_fd(msg, 2);
+	exit(EXIT_FAILURE);
+}
 
-	stack_a = NULL;
-	if (argc <= 1)
-		exit(EXIT_FAILURE);
-	validate_args(argv + 1);
-	// *stack_a = *stack_create((const char **)(argv + 1));
-	return (0);
+void	is_empty(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i] == " " || argv[i][0] == '\0')
+			ft_error("Error\n");
+		i++;
+	}
+}
+
+void	is_double(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (argv[j] == argv[i])
+				ft_error("Error\n");
+			j++;
+		}
+		i++;
+	}
 }

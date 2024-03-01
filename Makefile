@@ -29,8 +29,8 @@ SRCS			= $(addprefix $(SRCS_PATH), main.c \
 				stack_format.c)
 SRCS_BONUS		= $(addprefix $(SRCS_PATH),)
 LIBFT			= $(addprefix $(LIBFT_DIR), libft.a)
-OBJS			= $(SRC_CLIENT:%.c=$(BUILD_DIR)%.o)
-OBJS_BONUS		= $(SRC_SERVER_B:%.c=$(BUILD_DIR)%.o)
+OBJS			= $(SRCS:%.c=$(BUILD_DIR)%.o)
+OBJS_BONUS		= $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
 DEPS			= $(OBJS:.o=.d)
 DEPS_BONUS		= $(OBJS_BONUS:.o=.d)
 
@@ -51,7 +51,7 @@ LDFLAGS		= -ldl -lglfw -pthread
 
 # ------------------------------------------------------ COMPILATION
 
-COMP_OBJ		= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_OBJ	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 COMP_EXE	= $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 # ------------------------------------------------------ DEFINE
@@ -84,7 +84,7 @@ endef
 define comp_exe
 	$(COMP_EXE)
 	# printf "\n"
-	printf "$(CYAN)CLIENT-> $(RESET)$(PURPLE)Ok!\n$(RESET)"
+	printf "$(CYAN)PUSH_SWAP-> $(RESET)$(PURPLE)Ok!\n$(RESET)"
 endef
 
 # ------------------------------------------------------ TARGETS
