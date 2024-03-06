@@ -24,15 +24,16 @@ LIBFT_DIR	:= libft/
 
 # ------------------------------------------------------ FILES
 
-SRCS			= $(addprefix $(SRCS_PATH), main.c \
-				lst_utils.c \
-				stack_format.c)
-SRCS_BONUS		= $(addprefix $(SRCS_PATH),)
-LIBFT			= $(addprefix $(LIBFT_DIR), libft.a)
-OBJS			= $(SRCS:%.c=$(BUILD_DIR)%.o)
-OBJS_BONUS		= $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
-DEPS			= $(OBJS:.o=.d)
-DEPS_BONUS		= $(OBJS_BONUS:.o=.d)
+SRCS		= $(addprefix $(SRCS_PATH), main.c \
+			lst_utils.c \
+			stack_format.c \
+			validation.c)
+SRCS_BONUS	= $(addprefix $(SRCS_PATH),)
+LIBFT		= $(addprefix $(LIBFT_DIR), libft.a)
+OBJS		= $(SRCS:%.c=$(BUILD_DIR)%.o)
+OBJS_BONUS	= $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
+DEPS		= $(OBJS:.o=.d)
+DEPS_BONUS	= $(OBJS_BONUS:.o=.d)
 
 # ------------------------------------------------------ COMMANDS
 
