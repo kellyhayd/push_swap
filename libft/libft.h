@@ -41,6 +41,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(const char c);
 int		ft_isprint(int c);
+int 	ft_isspace(const char c);
 void	ft_error(char *msg);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
