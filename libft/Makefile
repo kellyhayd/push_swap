@@ -1,12 +1,14 @@
 # ----------------------------------------------------- COLORS
 
-CYAN	= \033[0;36m
-PURPLE	= \033[0;35m
-YELLOW	= \033[33m
-GREEN	= \033[0;32m
-WHITE	= \033[37m
-RED		= \033[31m
-RESET	= \033[0m
+CYAN		= \033[0;36m
+PURPLE		= \033[0;35m
+YELLOW		= \033[33m
+GREEN		= \033[0;32m
+DARK_GREEN	=\033[32m
+WHITE		= \033[37m
+RED			= \033[31m
+DARK_RED	=\033[31m
+RESET		= \033[0m
 
 # ------------------------------------------------------ NAME
 
@@ -112,7 +114,7 @@ endef
 define comp_lib
 	$(COMP_LIB)
 	printf "\n"
-	printf "$(CYAN)LIBFT-> $(RESET)$(PURPLE)Ok!\n$(RESET)"
+	printf "$(CYAN)LIBFT$(RESET)$(PURPLE) is ready to use!\n$(RESET)"
 endef
 
 # ------------------------------------------------------ TARGETS
@@ -131,6 +133,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	printf "$(CYAN)LIBFT $(DARK_GREEN)was $(DARK_RED)f$(DARK_GREEN)cleaned up\n$(RESET)"
 
 re: fclean all
 
