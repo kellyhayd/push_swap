@@ -15,41 +15,48 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_error(char *msg)
-{
-	printf("%s\n", msg);
-	// ft_putstr_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
-
-void	is_empty(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i] == " " || argv[i][0] == '\0')
-			ft_error("Error\n");
-		i++;
-	}
-}
-
-void	is_double(char **argv)
+int	is_double(char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[i] != 0)
+	while (argv[i])
 	{
 		j = 0;
 		while (j < i)
 		{
 			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
-				ft_error("Error\n");
+				return (ft_error("Error\n"), 0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	validate_args(char **argv, int argc)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		while (j < argc)
+		{
+			if (argv[i][0] ==  '\0' || argv[i] == " ")
+				return (ft_error("Error\n"), 0);
+			if (argv[i][0] == '-')
+				j++;
+			if (!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j]))
+				return (ft_error("Error\n"), 0);
+			j++;
+		}
+		i++;
+	}
+	if (!is_double(argv))
+		return (ft_error("Error\n"), 0);
+	return (1);
 }

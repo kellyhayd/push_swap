@@ -31,6 +31,7 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_isascii.c\
 		ft_isdigit.c\
 		ft_isprint.c\
+		ft_isspace.c \
 		ft_error.c \
 		ft_itoa.c\
 		ft_memchr.c\
@@ -105,7 +106,7 @@ endef
 define comp_objs
 	$(eval COUNT=$(shell expr $(COUNT) + 1))
 	$(COMP_OBJ)
-	printf "Compiling Libft$(YELLOW) %d%%\r$(FCOLOR)" $$(echo $$(($(COUNT) * 100 / $(words $(SRCS)))))
+	printf "Compiling Libft$(YELLOW) %d%%\r$(RESET)" $$(echo $$(($(COUNT) * 100 / $(words $(SRCS)))))
 endef
 
 define comp_lib

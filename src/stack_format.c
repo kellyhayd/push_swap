@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-t_stack	**stack_create()
-{
-	
-}
-
 // t_stack	**stack_create(const char **array)
 // {
 // 	t_stack	**stack;

@@ -8,7 +8,7 @@ WHITE	= \033[37m
 RED		= \033[31m
 RESET	= \033[0m
 
-# ------------------------------------------------------ NAME
+# ------------------------------------------------------ BASIC
 
 NAME			= push_swap
 .DEFAULT_GOAL	:= all
@@ -24,12 +24,13 @@ LIBFT_DIR	:= libft/
 
 # ------------------------------------------------------ FILES
 
-SRCS		= $(addprefix $(SRCS_PATH), main.c \
+SRCS		= $(addprefix $(SRCS_PATH), \
+			main.c \
 			lst_utils.c \
 			stack_format.c \
 			validation.c)
 SRCS_BONUS	= $(addprefix $(SRCS_PATH),)
-LIBFT		= $(addprefix $(LIBFT_DIR), libft.a)
+LIBFT		= $(LIBFT_DIR)libft.a
 OBJS		= $(SRCS:%.c=$(BUILD_DIR)%.o)
 OBJS_BONUS	= $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
 DEPS		= $(OBJS:.o=.d)
@@ -47,20 +48,20 @@ CC		= cc
 CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 CPPFLAGS	= $(addprefix -I ,$(INCS_PATH)) -MMD -MP
-LDLIBS		= $(LIBFT_DIR)libft.a
+LDLIB		= $(LIBFT_DIR)libft.a
 LDFLAGS		= -ldl -lglfw -pthread
 
 # ------------------------------------------------------ COMPILATION
 
 COMP_OBJ	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+COMP_EXE	= $(CC) $(LDLIB) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 # ------------------------------------------------------ DEFINE
 
 ifdef WITH_BONUS
-	OBJS		:= $(OBJS_BONUS)
-	NAME_SERVER	:= $(NAME_BONUS)
-	DEPS		:= $(DEPS_BONUS)
+	OBJS	:= $(OBJS_BONUS)
+	NAME	:= $(NAME_BONUS)
+	DEPS	:= $(DEPS_BONUS)
 endif
 
 # ------------------------------------------------------ FUNCTIONS
@@ -74,7 +75,14 @@ define bonus
 endef
 
 define comp_objs
+	$(eval COUNT=$(shell expr $(COUNT) + 1))
 	$(COMP_OBJ)
+	$(SLEEP)
+	printf "$(WHITE)Compiling$(FCOLOR)$(YELLOW) PUSH_SWAP: %d%%\r$(FCOLOR)" $$(echo $$(($(COUNT) * 100 / $(words $(SRCS)))))
+	@if [ $(COUNT) -eq $(words $(SRCS)) ]; then \
+		printf "$(DARK_GREEN)Push_swap is 100%% compiled$(FCOLOR) ✅"; \
+		printf "\n"; \
+	fi
 endef
 
 define comp_libft

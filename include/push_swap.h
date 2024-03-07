@@ -12,7 +12,11 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-int	*stack_copy(t_stack *stack_a);
+//--------------------------------------- Validate
+
+int	validate_args(char **argv, int argc);
+
+//--------------------------------------- Format
 
 /*
  * @brief Creates a linked list from an array of strings
@@ -29,6 +33,8 @@ int	*stack_copy(t_stack *stack_a);
  * the end of the existing list
  */
 t_stack	**stack_create(const char **array);
+
+//--------------------------------------- Linked List Functions
 
 t_stack	*lstlast(t_stack *lst);
 void	lstadd_back(t_stack **lst, t_stack *new);
