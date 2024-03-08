@@ -92,7 +92,6 @@ endef
 
 define comp_exe
 	$(COMP_EXE)
-	# printf "\n"
 	printf "$(CYAN)PUSH_SWAP-> $(RESET)$(PURPLE)Ok!\n$(RESET)"
 endef
 
@@ -121,6 +120,7 @@ fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(NAME_BONUS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
+	printf "$(CYAN)PUSH_SWAP$(DARK_GREEN) was $(RED)F$(DARK_GREEN)cleaned up!\n$(RESET)"
 
 re: fclean all
 

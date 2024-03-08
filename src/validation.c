@@ -6,11 +6,11 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/06 16:24:29 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:40:39 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
+#include "push_swap.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -46,7 +46,7 @@ int	validate_args(char **argv, int argc)
 		j = 0;
 		while (j < argc)
 		{
-			if (argv[i][0] ==  '\0' || argv[i] == " ")
+			if (argv[i][0] == '\0')
 				return (ft_error("Error\n"), 0);
 			if (argv[i][0] == '-')
 				j++;
