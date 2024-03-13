@@ -14,7 +14,7 @@ typedef struct s_stack
 
 //--------------------------------------- Validate
 
-int	validate_args(char **argv, int argc);
+int	validate_args(char **argv);
 
 //--------------------------------------- Format
 

@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/13 13:50:25 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:12:26 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_double(char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		j = 0;
@@ -35,7 +35,25 @@ int	is_double(char **argv)
 	return (1);
 }
 
-int	validate_args(char **argv, int argc)
+int	is_only_space(char *str)
+{
+	int	i;
+	int	ok;
+
+	ok = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			ok = 1;
+		if (str[i + 1] == '\0' && ok == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	validate_args(char **argv)
 {
 	int	i;
 	int	j;
@@ -43,20 +61,18 @@ int	validate_args(char **argv, int argc)
 	i = 0;
 	while (argv[i])
 	{
-		printf("argv[i] = %s\n", argv[i]);
+		if (is_only_space(argv[i]))
+			return (printf("only space\n"), ft_error("Error\n"), 0);
 		j = 0;
-		while (j < argc && ft_strlen(argv[i]) > 1)
+		while (argv[i][j] && ft_strlen(argv[i]) > 1)
 		{
-			printf("%c\n", argv[i][j]);
 			if (argv[i][0] == '\0')
-				return (printf("aqui tem um 0\n"), ft_error("Error\n"), 0);
-			if (argv[i][0] == '-')
+				return (ft_error("Error\n"), 0);
+			if ((argv[i][0] == '-' || argv[i][0] == '+')
+				&& ft_isdigit(argv[i][1]))
 				j++;
 			if (!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j]))
-			{
-				printf("erro de digito\n");
 				return (ft_error("Error\n"), 0);
-			}
 			j++;
 		}
 		i++;
