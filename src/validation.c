@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/08 13:40:39 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:50:25 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,20 @@ int	validate_args(char **argv, int argc)
 	i = 0;
 	while (argv[i])
 	{
+		printf("argv[i] = %s\n", argv[i]);
 		j = 0;
-		while (j < argc)
+		while (j < argc && ft_strlen(argv[i]) > 1)
 		{
+			printf("%c\n", argv[i][j]);
 			if (argv[i][0] == '\0')
-				return (ft_error("Error\n"), 0);
+				return (printf("aqui tem um 0\n"), ft_error("Error\n"), 0);
 			if (argv[i][0] == '-')
 				j++;
 			if (!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j]))
+			{
+				printf("erro de digito\n");
 				return (ft_error("Error\n"), 0);
+			}
 			j++;
 		}
 		i++;
