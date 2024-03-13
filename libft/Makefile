@@ -12,8 +12,8 @@ RESET		= \033[0m
 
 # ------------------------------------------------------ NAME
 
-NAME = libft.a
-.DEFAULT_GOAL := all
+NAME			= libft.a
+.DEFAULT_GOAL	:= all
 .PHONY: all clean fclean re
 .SILENT:
 
@@ -78,7 +78,6 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		print_char.c \
 		print_num.c)
 OBJS = $(SRCS:%.c=$(BUILD_DIR)%.o)
-DEPS = $(OBJS:.o=.d)
 
 # ------------------------------------------------------ COMMAND
 
@@ -92,7 +91,7 @@ AR = ar -rcs
 
 CFLAGS = -Wall -Wextra -Werror
 DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-LDLIBS = -lft -ldl -lglfw -pthread
+LDLIBS = -ldl -lglfw -pthread
 
 # ------------------------------------------------------ COMPILATION
 
@@ -133,7 +132,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	printf "$(CYAN)LIBFT $(DARK_GREEN)was $(DARK_RED)f$(DARK_GREEN)cleaned up\n$(RESET)"
+	printf "$(CYAN)LIBFT $(DARK_GREEN)was cleaned up\n$(RESET)"
 
 re: fclean all
 
