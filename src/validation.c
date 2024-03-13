@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/13 17:12:26 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:46:09 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	validate_args(char **argv)
 	while (argv[i])
 	{
 		if (is_only_space(argv[i]))
-			return (printf("only space\n"), ft_error("Error\n"), 0);
+			return (ft_error("Error\n"), 0);
 		j = 0;
 		while (argv[i][j] && ft_strlen(argv[i]) > 1)
 		{
@@ -71,7 +71,7 @@ int	validate_args(char **argv)
 			if ((argv[i][0] == '-' || argv[i][0] == '+')
 				&& ft_isdigit(argv[i][1]))
 				j++;
-			if (!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j]))
+			if (!ft_isdigit(argv[i][j]))
 				return (ft_error("Error\n"), 0);
 			j++;
 		}
