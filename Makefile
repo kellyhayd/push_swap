@@ -170,8 +170,8 @@ CC		= cc
 
 # ------------------------------------------------------ FLAGS
 
-CFLAGS		= -Wall -Wextra -Werror
-DFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror -g3
+DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
 LDFLAGS		= -ldl -lglfw -pthread
 
@@ -203,7 +203,7 @@ endef
 
 # ------------------------------------------------------ TARGETS
 
-gdb: 
+gdb:
 	$(CC) $(DFLAGS) $(CPPFLAGS) -c $< -o $@
 	$(CC) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
