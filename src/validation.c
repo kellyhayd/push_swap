@@ -6,14 +6,11 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 17:35:32 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:54:03 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#include <stdlib.h>
-#include <stdio.h>
 
 int	is_ordered(char **argv)
 {
