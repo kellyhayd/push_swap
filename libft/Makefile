@@ -77,7 +77,8 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_printf_utils.c \
 		print_hex.c \
 		print_char.c \
-		print_num.c)
+		print_num.c \
+		ft_arraysize.c)
 OBJS = $(SRCS:%.c=$(BUILD_DIR)%.o)
 
 # ------------------------------------------------------ COMMAND

@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:05:25 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 14:24:40 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:02:09 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int 	ft_isspace(const char c);
 void	ft_error(char *msg);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
+size_t	ft_arraysize(char **array);
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
