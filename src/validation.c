@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 14:36:32 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:35:32 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	validate_args(char **argv)
 		if (is_only_space(argv[i]))
 			return (0);
 		j = 0;
-		while (argv[i][j] && ft_strlen(argv[i]) > 1)
+		while (argv[i][j])
 		{
 			if (argv[i][0] == '\0')
 				return (0);
