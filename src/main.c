@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/13 17:18:49 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:30:45 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	// t_stack	**stack_a;
+	t_stack	*stack_a;
 	char	**array;
 
-	// stack_a = NULL;
+	stack_a = NULL;
 	array = NULL;
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
@@ -32,6 +32,6 @@ int	main(int argc, char **argv)
 		if (!validate_args(array))
 			exit(EXIT_FAILURE);
 	}
-	// create_stack(argv);
+	stack_create((const char **)argv + 1, &stack_a);
 	return (0);
 }

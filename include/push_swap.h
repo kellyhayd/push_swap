@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
+/*   Updated: 2024/03/14 12:41:41 by krocha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -14,7 +26,7 @@ typedef struct s_stack
 
 //--------------------------------------- Validate
 
-int	validate_args(char **argv);
+int		validate_args(char **argv);
 
 //--------------------------------------- Format
 
@@ -32,12 +44,11 @@ int	validate_args(char **argv);
  * the first element becomes the head. Otherwise, it is appended to
  * the end of the existing list
  */
-t_stack	**stack_create(const char **array);
+void	stack_create(const char **array, t_stack **stack);
 
 //--------------------------------------- Linked List Functions
 
 t_stack	*lstlast(t_stack *lst);
-void	lstadd_back(t_stack **lst, t_stack *new);
 t_stack	*lstnew(int content);
 
 #endif
