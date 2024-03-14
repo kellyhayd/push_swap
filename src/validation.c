@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/13 17:46:09 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:36:32 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+int	is_ordered(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i + 1] && ft_atoi(argv[i + 1]) < ft_atoi(argv[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	is_double(char **argv)
 {
@@ -27,12 +41,12 @@ int	is_double(char **argv)
 		while (j < i)
 		{
 			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
-				return (ft_error("Error\n"), 0);
+				return (ft_error("Error\n"), 1);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	is_only_space(char *str)
@@ -62,22 +76,22 @@ int	validate_args(char **argv)
 	while (argv[i])
 	{
 		if (is_only_space(argv[i]))
-			return (ft_error("Error\n"), 0);
+			return (0);
 		j = 0;
 		while (argv[i][j] && ft_strlen(argv[i]) > 1)
 		{
 			if (argv[i][0] == '\0')
-				return (ft_error("Error\n"), 0);
+				return (0);
 			if ((argv[i][0] == '-' || argv[i][0] == '+')
 				&& ft_isdigit(argv[i][1]))
 				j++;
 			if (!ft_isdigit(argv[i][j]))
-				return (ft_error("Error\n"), 0);
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	if (!is_double(argv))
-		return (ft_error("Error\n"), 0);
+	if (is_double(argv))
+		return (0);
 	return (1);
 }
