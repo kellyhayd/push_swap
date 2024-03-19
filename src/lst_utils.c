@@ -39,7 +39,7 @@ t_stack	*lstlast(t_stack *lst)
 // 	}
 // }
 
-t_stack	*lstnew(int content)
+t_stack	*lstnew(int content, int idx)
 {
 	t_stack	*newlst;
 
@@ -47,6 +47,7 @@ t_stack	*lstnew(int content)
 	if (!newlst)
 		return (0);
 	newlst->num = content;
+	newlst->idx = idx;
 	newlst->next = NULL;
 	newlst->prev = NULL;
 	return (newlst);

@@ -20,6 +20,7 @@
 typedef struct s_stack
 {
 	int		num;
+	int		idx;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -49,8 +50,10 @@ void	stack_create(const char **array, t_stack **stack);
 //--------------------------------------- Linked List Functions
 
 t_stack	*lstlast(t_stack *lst);
-t_stack	*lstnew(int content);
+t_stack	*lstnew(int content, int idx);
 
 int	is_ordered(char **argv);
+
+void	sa(t_stack **stack_a);
 
 #endif

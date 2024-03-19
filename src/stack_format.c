@@ -14,16 +14,17 @@
 
 void	stack_create(const char **array, t_stack **stack)
 {
-	t_stack	*last;
-	t_stack	*new;
-	int		i;
+	t_stack		*last;
+	t_stack		*new;
+	int			i;
+	static int	idx;
 
 	new = NULL;
 	last = NULL;
 	i = 0;
 	while (array[i])
 	{
-		new = lstnew(ft_atoi(array[i]));
+		new = lstnew(ft_atoi(array[i]), idx);
 		if (!new)
 			exit(EXIT_FAILURE);
 		if (!last)
@@ -36,6 +37,8 @@ void	stack_create(const char **array, t_stack **stack)
 		}
 		last = new;
 		printf("%d\n", last->num);
+		printf("idx = %d\n", last->idx);
 		i++;
+		idx++;
 	}
 }
