@@ -158,7 +158,8 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			main.c \
 			lst_utils.c \
 			stack_format.c \
-			validation.c)
+			validation.c \
+			moves.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 

@@ -14,5 +14,9 @@
 
 void	sa(t_stack **stack_a)
 {
-	
+	int		num_tmp;
+
+	num_tmp = (*stack_a)->num;
+	(*stack_a)->num = (*stack_a)->next->num;
+	(*stack_a)->next->num = num_tmp;
 }
