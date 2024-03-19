@@ -67,6 +67,5 @@ int	main(int argc, char **argv)
 	if (is_ordered(array))
 		return (1);
 	stack_create((const char **)array, &stack_a);
-	sa(&stack_a);
 	return (0);
 }

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-void	sa(t_stack **stack_a)
+void	swap(t_stack **stack)
 {
-	int		num_tmp;
+	int	num_tmp;
 
-	num_tmp = (*stack_a)->num;
-	(*stack_a)->num = (*stack_a)->next->num;
-	(*stack_a)->next->num = num_tmp;
+	num_tmp = (*stack)->num;
+	(*stack)->num = (*stack)->next->num;
+	(*stack)->next->num = num_tmp;
 }

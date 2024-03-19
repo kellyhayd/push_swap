@@ -54,6 +54,6 @@ t_stack	*lstnew(int content, int idx);
 
 int	is_ordered(char **argv);
 
-void	sa(t_stack **stack_a);
+void	swap(t_stack **stack);
 
 #endif
