@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:45:48 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/20 11:10:33 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:13:46 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	update_idx(t_stack **stack)
 {
-	int	i;
+	int		i;
+	t_stack	*aux;
 
-	while ((*stack)->next)
+	i = 0;
+	aux = *stack;
+	while (aux)
 	{
-		(*stack)->idx = i;
-		(*stack) = (*stack)->next;
+		aux->idx = i;
+		aux = aux->next;
 		i++;
 	}
-	(*stack)->idx = i;
 }
 
 void	swap(t_stack **stack)
@@ -42,48 +44,42 @@ void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*last;
-	int		i;
 
-	tmp = *stack;
-	last = lstlast(*stack);
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last->next = tmp;
-	tmp->prev = last;
-	tmp->next = NULL;
-	i = 0;
-	while ((*stack)->next)
+	if (lstsize(*stack) >= 2)
 	{
-		(*stack)->idx = i;
-		i++;
+		tmp = *stack;
+		last = lstlast(*stack);
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		last->next = tmp;
+		tmp->prev = last;
+		tmp->next = NULL;
+		update_idx(stack);
+		printf("%d\n", (*stack)->num);
+		printf("%d\n", (*stack)->next->num);
+		printf("%d\n", (*stack)->next->next->num);
 	}
 }
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack *tmp;
-	t_stack *last;
-	// int		i;
+	t_stack	*tmp;
+	t_stack	*last;
+	t_stack	*penultimate;
 
-	tmp = (*stack);
-	last = lstlast(*stack);
-	*stack = last;
-	(*stack)->prev = NULL;
-	(*stack)->next = tmp;
-
-	last = last->prev;
-	if (last)
-		last->next = NULL;
-	// update_idx(stack);
-	// i = 0;
-	// while (*stack)
-	// {
-	// 	if (*stack != last)
-    //         (*stack)->idx = i;
-    //     *stack = (*stack)->next;
-    //     i++;
-	// }
-	printf("%d\n", (*stack)->num);
-	printf("%d\n", (*stack)->next->num);
-	printf("%d\n", (*stack)->next->next->num);
+	if (lstsize(*stack) >= 2)
+	{
+		tmp = (*stack);
+		last = lstlast(*stack);
+		penultimate = last->prev;
+		penultimate->next = NULL;
+		last->prev = NULL;
+		tmp->prev = last;
+		last->next = tmp;
+		*stack = last;
+	}
 }
+
+// printf("%d\n", (*stack)->num);
+// printf("%d\n", (*stack)->next->num);
+// printf("%d\n", (*stack)->next->next->num);

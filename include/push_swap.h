@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/20 09:59:40 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:43:38 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	stack_create(const char **array, t_stack **stack);
 
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int content, int idx);
+int	lstsize(t_stack *lst);
 
 int	is_ordered(char **argv);
 

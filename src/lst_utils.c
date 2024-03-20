@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:20 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 12:40:05 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:43:20 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ t_stack	*lstnew(int content, int idx)
 	return (newlst);
 }
 
+int	lstsize(t_stack *lst)
+{
+	int	count;
+
+	count = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
+}
 
