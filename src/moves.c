@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:45:48 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 17:50:21 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:10:33 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,40 @@ void	swap(t_stack **stack)
 
 void	rotate(t_stack **stack, t_data *lst)
 {
-	t_stack *last = lst->last;
-    t_stack *new_first = NULL;
-    t_stack *tmp;
-	t_stack	*print;
-    int     i;
+	t_stack	*tmp;
+	t_stack	*last;
 
-    last->next = NULL;
-    new_first->prev = NULL;
-    tmp = *stack;
-    *stack = (*stack)->next;
-    lst->last = tmp;
-	lst->last->next = NULL;
-	lst->last->prev = last;
-
-    i = 0;
 	tmp = *stack;
-   	while ((*stack)->next)
-    {
-        tmp->idx = i;
-		*stack = (*stack)->next;
-        i++;
-    }
+	last = lst->last;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last->next = tmp;
+	tmp->prev = last;
+	tmp->next = NULL;
+	lst->last = tmp;
+}
 
-	// print = lstlast(*stack);
-	printf("\nnode 1 = %d\nnode last = %d\n", (*stack)->num, lst->last->num);
-	// printf("\nlast node: num = %d | idx = %d\n", print->num, print->idx);
+void	reverse_rotate(t_stack **stack, t_data *lst)
+{
+	t_stack	*tmp;
+	t_stack	*last;
+
+	if (!*stack || !lst)
+		return ;
+	tmp = malloc(sizeof(t_stack));
+	last = malloc(sizeof(t_stack));
+	tmp = *stack;
+	last = lst->last;
+
+	*stack = last;
+	(*stack)->prev = NULL;
+	(*stack)->next = tmp;
+
+	last = last->prev;
+	last->next = NULL;
+	lst->last = last;
+
+	printf("%d\n", lst->last->num);
+	
+
 }

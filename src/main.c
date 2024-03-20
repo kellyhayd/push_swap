@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 14:42:42 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:58:37 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	main(int argc, char **argv)
 	if (is_ordered(array))
 		return (1);
 	stack_create((const char **)array, &stack_a, lst);
-	rotate(&stack_a, lst);
+	reverse_rotate(&stack_a, lst);
 	return (0);
 }

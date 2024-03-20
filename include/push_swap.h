@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 14:30:28 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:59:40 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	is_ordered(char **argv);
 
 void	swap(t_stack **stack);
 void	rotate(t_stack **stack, t_data *lst);
+void	reverse_rotate(t_stack **stack, t_data *lst);
 
 #endif
