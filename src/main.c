@@ -44,10 +44,12 @@ static char	**copy_argv(char **argv)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	t_data	*lst;
 	char	**array;
 
 	stack_a = NULL;
 	array = NULL;
+	lst = ft_calloc (sizeof(t_data), 1);
 	if (argc <= 1)
 		return (ft_error("Error\n"), 1);
 	else if (argc > 2)
@@ -66,6 +68,7 @@ int	main(int argc, char **argv)
 	}
 	if (is_ordered(array))
 		return (1);
-	stack_create((const char **)array, &stack_a);
+	stack_create((const char **)array, &stack_a, lst);
+	rotate(&stack_a, lst);
 	return (0);
 }

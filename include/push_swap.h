@@ -25,6 +25,11 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
+typedef struct s_data
+{
+	struct s_stack	*last;
+}	t_data;
+
 //--------------------------------------- Validate
 
 int		validate_args(char **argv);
@@ -45,7 +50,7 @@ int		validate_args(char **argv);
  * the first element becomes the head. Otherwise, it is appended to
  * the end of the existing list
  */
-void	stack_create(const char **array, t_stack **stack);
+void	stack_create(const char **array, t_stack **stack, t_data *lst);
 
 //--------------------------------------- Linked List Functions
 
@@ -55,5 +60,6 @@ t_stack	*lstnew(int content, int idx);
 int	is_ordered(char **argv);
 
 void	swap(t_stack **stack);
+void	rotate(t_stack **stack, t_data *lst);
 
 #endif
