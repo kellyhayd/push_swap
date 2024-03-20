@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+void	update_idx(t_stack **stack)
+{
+	int	i;
+
+	while ((*stack)->next)
+	{
+		(*stack)->idx = i;
+		(*stack) = (*stack)->next;
+		i++;
+	}
+	(*stack)->idx = i;
+}
+
 void	swap(t_stack **stack)
 {
 	int	num_tmp;
@@ -25,42 +38,52 @@ void	swap(t_stack **stack)
 	(*stack)->next->idx = idx_tmp;
 }
 
-void	rotate(t_stack **stack, t_data *lst)
+void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*last;
+	int		i;
 
 	tmp = *stack;
-	last = lst->last;
+	last = lstlast(*stack);
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
 	last->next = tmp;
 	tmp->prev = last;
 	tmp->next = NULL;
-	lst->last = tmp;
+	i = 0;
+	while ((*stack)->next)
+	{
+		(*stack)->idx = i;
+		i++;
+	}
 }
 
-void	reverse_rotate(t_stack **stack, t_data *lst)
+void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*tmp;
-	t_stack	*last;
+	t_stack *tmp;
+	t_stack *last;
+	// int		i;
 
-	if (!*stack || !lst)
-		return ;
-	tmp = malloc(sizeof(t_stack));
-	last = malloc(sizeof(t_stack));
-	tmp = *stack;
-	last = lst->last;
-
+	tmp = (*stack);
+	last = lstlast(*stack);
 	*stack = last;
 	(*stack)->prev = NULL;
 	(*stack)->next = tmp;
 
 	last = last->prev;
-	last->next = NULL;
-	lst->last = last;
-
-	printf("%d\n", lst->last->num);
-	
-
+	if (last)
+		last->next = NULL;
+	// update_idx(stack);
+	// i = 0;
+	// while (*stack)
+	// {
+	// 	if (*stack != last)
+    //         (*stack)->idx = i;
+    //     *stack = (*stack)->next;
+    //     i++;
+	// }
+	printf("%d\n", (*stack)->num);
+	printf("%d\n", (*stack)->next->num);
+	printf("%d\n", (*stack)->next->next->num);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	stack_create(const char **array, t_stack **stack, t_data *lst)
+void	stack_create(const char **array, t_stack **stack)
 {
 	t_stack		*last;
 	t_stack		*new;
@@ -36,9 +36,6 @@ void	stack_create(const char **array, t_stack **stack, t_data *lst)
 			new->prev = last;
 		}
 		last = new;
-		lst->last = new;
-		printf("%d\n", last->num);
-		printf("idx = %d\n", last->idx);
 		idx++;
 	}
 }
