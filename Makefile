@@ -171,7 +171,8 @@ CC		= cc
 
 # ------------------------------------------------------ FLAGS
 
-CFLAGS		= -Wall -Wextra -Werror -g3
+# CFLAGS		= -Wall -Wextra -Werror -g3 -----------ARRUMAR ESSA MERDA
+CFLAGS		= -g3
 DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
 LDFLAGS		= -ldl -lglfw -pthread
