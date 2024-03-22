@@ -156,6 +156,7 @@ LIBFT_DIR	:= ./libft/
 
 SRC		= $(addprefix $(SRCS_PATH), \
 			main.c \
+			utils.c \
 			lst_utils.c \
 			stack_format.c \
 			validation.c \
@@ -223,8 +224,6 @@ $(LIBFT):
 
 $(BUILD_DIR)%.o: %.c
 	$(call comp_objs)
-
-
 
 clean:
 	$(RM) $(BUILD_DIR)

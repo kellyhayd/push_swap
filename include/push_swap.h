@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:41:29 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:14:37 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_stack	*lstnew(int content, int idx);
 int	lstsize(t_stack *lst);
 
 char	**copy_argv(char **argv);
+void	free_array(char **array);
 
 int	is_ordered(char **argv);
 
