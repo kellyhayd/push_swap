@@ -6,13 +6,13 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:04:23 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:14:14 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:39:45 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **stack_src, t_stack **stack_dest)
+static void	push(t_stack **stack_src, t_stack **stack_dest)
 {
 	t_stack	*node_to_push;
 

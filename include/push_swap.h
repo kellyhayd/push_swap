@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/20 16:43:38 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:41:29 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,20 @@ t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int content, int idx);
 int	lstsize(t_stack *lst);
 
+char	**copy_argv(char **argv);
+
 int	is_ordered(char **argv);
 
-void	swap(t_stack **stack);
-void	rotate(t_stack **stack);
-void	reverse_rotate(t_stack **stack);
+void	pb(t_stack **stack_a, t_stack **stack_b);
+void	pa(t_stack **stack_a, t_stack **stack_b);
+void	rra(t_stack **stack);
+void	rrb(t_stack **stack);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
+void	ra(t_stack **stack);
+void	rb(t_stack **stack);
+void	rr(t_stack **stack_a, t_stack **stack_b);
+void	sa(t_stack **stack);
+void	sb(t_stack **stack);
+void	update_idx(t_stack **stack);
 
 #endif

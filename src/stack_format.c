@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:26 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 12:41:38 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:32:07 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	stack_create(const char **array, t_stack **stack)
 {
 	t_stack		*last;
 	t_stack		*new;
-	int			i;
 	static int	idx;
+	int			i;
 
 	new = NULL;
 	last = NULL;
@@ -38,4 +38,12 @@ void	stack_create(const char **array, t_stack **stack)
 		last = new;
 		idx++;
 	}
+	free(new);
+	// i = 0;
+	// while (array[i])
+	// {
+	// 	free(&array[i]);
+	// 	i++;
+	// }
+	free(array);
 }

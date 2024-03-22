@@ -6,13 +6,13 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:02:27 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:18:30 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:41:47 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*last;

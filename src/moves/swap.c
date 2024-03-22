@@ -6,13 +6,13 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:01:42 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:19:32 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:41:51 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+static void	swap(t_stack **stack)
 {
 	int	num_tmp;
 	int	idx_tmp;

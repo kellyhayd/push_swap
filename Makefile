@@ -159,7 +159,11 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			lst_utils.c \
 			stack_format.c \
 			validation.c \
-			moves.c)
+			./moves/moves_utils.c \
+			./moves/swap.c \
+			./moves/push.c \
+			./moves/reverse_rotate.c \
+			./moves/rotate.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
@@ -171,7 +175,7 @@ CC		= cc
 
 # ------------------------------------------------------ FLAGS
 
-# CFLAGS		= -Wall -Wextra -Werror -g3 -----------ARRUMAR ESSA MERDA
+# CFLAGS		= -Wall -Wextra -Werror -g3 ----------- DESCOMENTAR E DELETAR A LINHA DEBAIXO***********
 CFLAGS		= -g3
 DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
