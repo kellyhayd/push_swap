@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:01:42 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:41:51 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:25:45 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ static void	swap(t_stack **stack)
 
 void	sa(t_stack **stack)
 {
-	write(1, "pa\n", 3);
+	write(1, "sa\n", 3);
 	swap(stack);
 }
 
 void	sb(t_stack **stack)
 {
-	write(1, "pb\n", 3);
+	write(1, "sb\n", 3);
 	swap(stack);
+}
+
+void	s_stack(t_stack **stack_a, t_stack **stack_b)
+{
+	write(1, "ss\n", 3);
+	swap(stack_a);
+	swap(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:51:44 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:22:51 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,19 @@ int	main(int argc, char **argv)
 		array = ft_split((const char *)argv[1], ' ');
 		if (!array || array[0] == NULL)
 		{
-			free(array);
+			free_array(array);
 			return (ft_error("Error\n"), EXIT_FAILURE);
 		}
 		if (!validate_args(array))
 		{
-			free(array);
+			free_array(array);
 			return (ft_error("Error\n"), 1);
 		}
 	}
 	if (is_ordered(array))
 		return (1);
 	stack_create((const char **)array, &stack_a);
+	free_array(array);
 	// rotate(&stack_a);
 	return (0);
 }

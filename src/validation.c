@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/14 17:54:03 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:24:36 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int	is_ordered(char **argv)
 	return (1);
 }
 
-int	is_double(char **argv)
+int	is_double_or_over_limit(char **argv)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
+		if (argv[i] > INT_MAX || argv[i] < INT_MIN)
+			return (ft_error("Error\n"), 1);
 		j = 0;
 		while (j < i)
 		{
@@ -88,7 +90,7 @@ int	validate_args(char **argv)
 		}
 		i++;
 	}
-	if (is_double(argv))
+	if (is_double_or_over_limit(argv))
 		return (0);
 	return (1);
 }

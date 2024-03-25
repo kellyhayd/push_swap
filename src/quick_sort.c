@@ -6,20 +6,11 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:23 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/01 11:59:24 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:28:25 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
 
 int	partition(int *array, int start, int end)
 {
@@ -53,18 +44,4 @@ void	quick_sort(int *array, int start, int end)
 		quick_sort(array, start, pivot_idx - 1);
 		quick_sort(array, pivot_idx + 1, end);
 	}
-}
-
-int	main(void)
-{
-	int	array[5] = {5, 8, 2, 23, 3};
-	int	i = 0;
-
-	quick_sort(array, 0, 4);
-	while (i < 5)
-	{
-		printf("%d\n", array[i]);
-		i++;
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 14:14:37 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:24:48 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -51,12 +52,12 @@ void	stack_create(const char **array, t_stack **stack);
 
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int content, int idx);
-int	lstsize(t_stack *lst);
+int		lstsize(t_stack *lst);
 
 char	**copy_argv(char **argv);
 void	free_array(char **array);
 
-int	is_ordered(char **argv);
+int		is_ordered(char **argv);
 
 void	pb(t_stack **stack_a, t_stack **stack_b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
