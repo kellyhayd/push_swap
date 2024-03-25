@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:04:23 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 13:39:45 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:14:03 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	push(t_stack **stack_src, t_stack **stack_dest)
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
+	push(stack_b, stack_a);
 	write(1, "pa\n", 3);
-	push(stack_a, stack_b);
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
+	push(stack_a, stack_b);
 	write(1, "pb\n", 3);
-	push(stack_b, stack_a);
 }

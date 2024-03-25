@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_format.c                                     :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 11:59:26 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 16:27:31 by krocha-h         ###   ########.fr       */
+/*   Created: 2024/03/25 16:31:58 by krocha-h          #+#    #+#             */
+/*   Updated: 2024/03/25 17:01:46 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_create(char **array, t_stack **stack)
+void	define_sort(t_stack **stack_a, t_stack **stack_b, int size_lst)
 {
-	t_stack		*last;
-	t_stack		*new;
-	int			idx;
-	int			i;
-
-	last = NULL;
-	idx = 0;
-	i = -1;
-	while (array[++i])
-	{
-		new = lstnew(ft_atoi(array[i]), idx);
-		if (!new)
-			exit(EXIT_FAILURE);
-		if (!last)
-			*stack = new;
-		else
-		{
-			last->next = new;
-			new->next = NULL;
-			new->prev = last;
-		}
-		last = new;
-		idx++;
-	}
-	return(idx);
+	if (size_lst == 3)
+		sort_three(stack_a);
+	if (size_lst == 4)
+		sort_four(stack_a, stack_b);
+	if (size_lst == 5)
+		sort_five(stack_a, stack_b);
 }

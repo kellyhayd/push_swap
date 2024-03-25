@@ -164,7 +164,10 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			./moves/swap.c \
 			./moves/push.c \
 			./moves/reverse_rotate.c \
-			./moves/rotate.c)
+			./moves/rotate.c \
+			algorithm_three.c \
+			algorithm_five.c \
+			sort.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
@@ -176,8 +179,8 @@ CC		= cc
 
 # ------------------------------------------------------ FLAGS
 
-# CFLAGS		= -Wall -Wextra -Werror -g3 ----------- DESCOMENTAR E DELETAR A LINHA DEBAIXO***********
-CFLAGS		= -g3
+CFLAGS		= -Wall -Wextra -Werror -g3
+# CFLAGS		= -g3
 DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
 LDFLAGS		= -ldl -lglfw -pthread

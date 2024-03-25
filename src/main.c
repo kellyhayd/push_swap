@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 15:22:51 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:10:20 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	t_stack *stack_b;
+	t_stack *tmp;
 	char	**array;
+	int		size_lst;
 
 	stack_a = NULL;
 	array = NULL;
@@ -45,8 +48,25 @@ int	main(int argc, char **argv)
 	}
 	if (is_ordered(array))
 		return (1);
-	stack_create((const char **)array, &stack_a);
+	size_lst = stack_create(array, &stack_a);
+	// printf("\n%d %d %d\n", stack_a->num, stack_a->next->num, stack_a->next->next->num);
+	tmp = stack_a;
+	while (tmp)
+	{
+		printf("%d ", tmp->num);
+		tmp = tmp->next;
+	}
+	define_sort(&stack_a, &stack_b, size_lst);
 	free_array(array);
-	// rotate(&stack_a);
+	printf("\n");
+	// printf("%d %d %d\n", stack_a->num, stack_a->next->num, stack_a->next->next->num);
+	tmp = stack_a;
+	while (tmp)
+	{
+		printf("%d ", tmp->num);
+		tmp = tmp->next;
+	}
+	printf("\n");
+	lstclear(&stack_a, free);
 	return (0);
 }

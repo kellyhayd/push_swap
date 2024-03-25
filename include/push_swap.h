@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 11:24:48 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:01:13 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ int		validate_args(char **argv);
  * the first element becomes the head. Otherwise, it is appended to
  * the end of the existing list
  */
-void	stack_create(const char **array, t_stack **stack);
+int	stack_create(char **array, t_stack **stack);
 
 //--------------------------------------- Linked List Functions
 
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int content, int idx);
 int		lstsize(t_stack *lst);
+void	lstclear(t_stack **lst, void (*del)(void*));
 
 char	**copy_argv(char **argv);
 void	free_array(char **array);
@@ -70,5 +71,10 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	sa(t_stack **stack);
 void	sb(t_stack **stack);
 void	update_idx(t_stack **stack);
+
+void	define_sort(t_stack **stack_a, t_stack **stack_b, int size_lst);
+void	sort_three(t_stack **stack);
+void	sort_four(t_stack **stack_a, t_stack **stack_b);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
 
 #endif

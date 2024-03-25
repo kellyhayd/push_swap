@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:26 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 14:05:14 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:35:16 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_array(char **array)
 	int	i;
 
 	i = 0;
-	while (array || array[i])
+	while (array[i])
 	{
 		free(array[i]);
 		i++;
@@ -29,7 +29,6 @@ char	**copy_argv(char **argv)
 {
 	char	**array;
 	int		i;
-	int		j;
 
 	i = 0;
 	while (argv[i])
@@ -40,7 +39,7 @@ char	**copy_argv(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		array[i] = ft_calloc(ft_strlen(argv[i] + 1), 1);
+		array[i] = ft_calloc(ft_strlen(argv[i]) + 1, 1);
 		if (!array[i])
 			return (free_array(array), NULL);
 		ft_strcpy(array[i], argv[i]);
