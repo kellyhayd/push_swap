@@ -6,11 +6,26 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:20 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/20 16:43:20 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:20:33 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	lstclear(t_stack **lst, void (*del)(void*))
+{
+	t_stack	*tmp;
+
+	if (!lst || !(*del) || !(*lst))
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = 0;
+}
 
 t_stack	*lstlast(t_stack *lst)
 {
@@ -20,24 +35,6 @@ t_stack	*lstlast(t_stack *lst)
 		lst = lst->next;
 	return (lst);
 }
-
-// void	lstadd_back(t_stack **lst, t_stack *new)
-// {
-// 	t_stack *last;
-
-// 	if (!last)
-// 	{
-// 		*lst = new;
-// 		new->prev = NULL;
-// 		new->next = NULL;
-// 	}
-// 	else
-// 	{
-// 		last->next = new;
-// 		new->prev = last;
-// 		new->next = NULL;
-// 	}
-// }
 
 t_stack	*lstnew(int content, int idx)
 {
