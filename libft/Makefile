@@ -27,6 +27,7 @@ BUILD_DIR := build/
 SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_arraysize.c \
 		ft_atoi.c \
+		ft_atol.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_error.c \
