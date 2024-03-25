@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 11:24:36 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:44:06 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_ordered(char **argv)
 	int	i;
 
 	i = 0;
-	while (argv[i])
+	while (argv[i] && argv[i + 1])
 	{
 		if (argv[i + 1] && ft_atoi(argv[i + 1]) < ft_atoi(argv[i]))
 			return (0);
@@ -34,12 +34,12 @@ int	is_double_or_over_limit(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (argv[i] > INT_MAX || argv[i] < INT_MIN)
+		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
 			return (ft_error("Error\n"), 1);
 		j = 0;
 		while (j < i)
 		{
-			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
+			if (ft_atol(argv[j]) == ft_atol(argv[i]))
 				return (ft_error("Error\n"), 1);
 			j++;
 		}
