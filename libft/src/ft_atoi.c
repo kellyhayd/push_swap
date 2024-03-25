@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:31:18 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/22 15:10:38 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:16:00 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_atoi(const char *str)
 	int	n;
 	int	result;
 
-	if (str[i] == '\0')
-		return (NULL);
+	if (str[0] == '\0')
+		exit(EXIT_FAILURE);
 	i = 0;
 	n = 1;
 	result = 0;
