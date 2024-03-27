@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:13:51 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 17:48:20 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:54:34 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, int *args, int size)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	div = (size - 1) / 4;
+	div = (size) / 4;
 	tmp_max = args[div];
-	while (size >= div)
+	while (size > div)
 	{
 		while ((*stack_a))
 		{
