@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:39:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 14:44:06 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:14:01 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	validate_args(char **argv)
 			if ((argv[i][0] == '-' || argv[i][0] == '+')
 				&& ft_isdigit(argv[i][1]))
 				j++;
-			if (!ft_isdigit(argv[i][j]))
+			else if (!ft_isdigit(argv[i][j]))
 				return (0);
 			j++;
 		}

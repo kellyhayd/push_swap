@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 10:39:27 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:07:00 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,13 @@ void	sa(t_stack **stack);
 void	sb(t_stack **stack);
 void	update_idx(t_stack **stack);
 
-void	define_sort(t_stack **stack_a, t_stack **stack_b, int size_lst);
+void	define_sort(t_stack **stack_a, t_stack **stack_b, char **array, int size_lst);
 void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
+void	sort_ten(t_stack **stack_a, t_stack **stack_b);
+
+int		get_min(t_stack **stack);
+void	quick_sort(int *array, int start, int end);
 
 #endif

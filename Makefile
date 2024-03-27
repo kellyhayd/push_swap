@@ -165,8 +165,10 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			./moves/push.c \
 			./moves/reverse_rotate.c \
 			./moves/rotate.c \
-			algorithm_three.c \
-			algorithm_five.c \
+			algorithm_3.c \
+			algorithm_4-5.c \
+			algorithm_10.c \
+			quick_sort.c \
 			sort.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)

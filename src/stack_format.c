@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:26 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 10:40:38 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:31:17 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	stack_create(char **array, t_stack **stack)
 {
-	t_stack		*last;
-	t_stack		*new;
-	int			idx;
-	int			i;
+	t_stack	*last;
+	t_stack	*new;
+	int		idx;
+	int		i;
 
 	last = NULL;
 	idx = 0;
