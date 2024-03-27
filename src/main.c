@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 16:06:49 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:44:22 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 	if (is_ordered(array))
 		return (1);
 	size_lst = stack_create(array, &stack_a);
-// printf("\n%d %d %d\n", stack_a->num, stack_a->next->num, stack_a->next->next->num);
 	tmp = stack_a;
 	while (tmp)
 	{

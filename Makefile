@@ -168,6 +168,7 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			algorithm_3.c \
 			algorithm_4-5.c \
 			algorithm_10.c \
+			algorithm_100.c \
 			quick_sort.c \
 			sort.c)
 LIBFT	:= $(LIBFT_DIR)libft.a

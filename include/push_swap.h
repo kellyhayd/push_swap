@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 16:07:00 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:58:02 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	sort_ten(t_stack **stack_a, t_stack **stack_b);
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b, int *args, int size_lst);
 
 int		get_min(t_stack **stack);
 void	quick_sort(int *array, int start, int end);
