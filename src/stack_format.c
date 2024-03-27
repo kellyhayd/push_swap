@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:26 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 16:27:31 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:40:38 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	stack_create(char **array, t_stack **stack)
 		last = new;
 		idx++;
 	}
-	return(idx);
+	return (idx);
 }

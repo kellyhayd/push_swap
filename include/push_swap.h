@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 17:01:13 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:39:27 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct s_stack
 {
-	int		num;
-	int		idx;
+	int				num;
+	int				idx;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -46,7 +46,7 @@ int		validate_args(char **argv);
  * the first element becomes the head. Otherwise, it is appended to
  * the end of the existing list
  */
-int	stack_create(char **array, t_stack **stack);
+int		stack_create(char **array, t_stack **stack);
 
 //--------------------------------------- Linked List Functions
 

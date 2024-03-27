@@ -6,13 +6,13 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:58:30 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 15:58:31 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:40:21 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int ft_isspace(const char c)
+int	ft_isspace(const char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);

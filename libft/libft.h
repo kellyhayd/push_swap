@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:05:25 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 14:04:30 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:40:10 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(const char c);
 int		ft_isprint(int c);
-int 	ft_isspace(const char c);
+int		ft_isspace(const char c);
 void	ft_error(char *msg);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
