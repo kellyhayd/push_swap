@@ -22,6 +22,8 @@ static void	push(t_stack **stack_src, t_stack **stack_dest)
 	*stack_src = (*stack_src)->next;
 	node_to_push->next = *stack_dest;
 	*stack_dest = node_to_push;
+	update_idx(stack_src);
+	update_idx(stack_dest);
 }
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
