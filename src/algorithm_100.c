@@ -12,49 +12,56 @@
 
 #include "push_swap.h"
 
-void	send_to_b(t_stack **stack_a, t_stack **stack_b, int size, int tmp_max)
+void	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
 	int	proximity;
 	int	direction;
 
-	proximity = (size - 1) / 2;
+	proximity = (current->size - 1) / 2;
 	if ((*stack_a)->idx >= proximity)
 		direction = 1;
 	else
 		direction = 2;
-	while ((*stack_a)->idx != 0 && (*stack_a)->num > tmp_max)
+	while ((*stack_a)->num != current->num_max)
 	{
 		if (direction == 1)
-			ra(stack_a);
-		else
 			rra(stack_a);
+		else if (direction == 2)
+			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
 }
 
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b, int *args, int size)
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
 	int	div;
-	int	tmp_max;
+	int	parcel;
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	div = (size) / 4;
-	tmp_max = args[div];
-	while (size > div)
+	div = (current->size) / 4;
+	parcel = div;
+	current->num_max = current->args[div];
+	printf("num_max = %d\n", current->num_max);
+	tmp = *stack_a;
+	while (tmp)
 	{
-		while ((*stack_a))
+		while (current->size >= (current->size - div))
 		{
-			if ((*stack_a)->num <= tmp_max)
-				send_to_b(stack_a, stack_b, size, tmp_max);
+			if (tmp->num <= current->num_max)
+			{
+				send_to_b(stack_a, stack_b, current);
+				current->size = lstsize(tmp);
+			}
 			else
-				(*stack_a) = (*stack_a)->next;
+				tmp = tmp->next;
 		}
-		size = lstsize((*stack_a));
-		div += div;
-		tmp_max = args[div];
+		parcel += div;
+		current->num_max = current->args[div];
 	}
 	tmp = *stack_a;
+	while (tmp->prev != NULL)
+		tmp = tmp->prev;
 	printf("\nstack_a ");
 	while (tmp)
 	{

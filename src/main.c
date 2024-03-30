@@ -17,11 +17,12 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_stack	*tmp;
+	t_data	*current;
 	char	**array;
-	int		size_lst;
 
 	stack_a = NULL;
 	array = NULL;
+	current = ft_calloc(sizeof(t_data), 1);
 	if (argc <= 1)
 		return (ft_error("Error\n"), 1);
 	else if (argc > 2)
@@ -48,14 +49,14 @@ int	main(int argc, char **argv)
 	}
 	if (is_ordered(array))
 		return (1);
-	size_lst = stack_create(array, &stack_a);
+	current->size = stack_create(array, &stack_a);
 	tmp = stack_a;
 	while (tmp)
 	{
 		printf("%d ", tmp->num);
 		tmp = tmp->next;
 	}
-	define_sort(&stack_a, &stack_b, array, size_lst);
+	def_sort(&stack_a, &stack_b, array, current);
 	free_array(array);
 	printf("\n");
 	tmp = stack_a;

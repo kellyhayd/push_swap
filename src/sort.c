@@ -12,26 +12,24 @@
 
 #include "push_swap.h"
 
-int	*convert_to_int(char **array, int size_lst)
+void	convert_to_int(char **arr, t_data *current)
 {
 	int	i;
-	int	*args;
 
-	args = ft_calloc(sizeof(int), size_lst);
+	current->args = ft_calloc(sizeof(int), current->size);
 	i = 0;
-	while (array[i])
+	while (arr[i])
 	{
-		args[i] = ft_atoi(array[i]);
+		current->args[i] = ft_atoi(arr[i]);
 		i++;
 	}
-	return (args);
 }
 
-void	define_sort(t_stack **stack_a, t_stack **stack_b, char **array, int size_lst)
+void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur)
 {
-	int	*args;
+	int	size_lst;
 
-	// size_lst = (*stack_a)->size;
+	size_lst = cur->size;
 	if (size_lst == 3)
 		sort_three(stack_a);
 	if (size_lst == 4)
@@ -42,8 +40,8 @@ void	define_sort(t_stack **stack_a, t_stack **stack_b, char **array, int size_ls
 		sort_ten(stack_a, stack_b);
 	if (size_lst > 10 && size_lst <= 100)
 	{
-		args = convert_to_int(array, size_lst);
-		quick_sort(args, 0, size_lst - 1);
-		sort_hundred(stack_a, stack_b, args, size_lst);
+		convert_to_int(arr, cur);
+		quick_sort(cur->args, 0, size_lst - 1);
+		sort_hundred(stack_a, stack_b, cur);
 	}
 }

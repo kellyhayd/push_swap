@@ -26,6 +26,16 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
+typedef struct s_data
+{
+	int		num_max;
+	int		idx;
+	int		size;
+	int		*args;
+	char	*array;
+}	t_data;
+
+
 //--------------------------------------- Validate
 
 int		validate_args(char **argv);
@@ -72,12 +82,12 @@ void	sa(t_stack **stack);
 void	sb(t_stack **stack);
 void	update_idx(t_stack **stack);
 
-void	define_sort(t_stack **stack_a, t_stack **stack_b, char **array, int size_lst);
+void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur);
 void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	sort_ten(t_stack **stack_a, t_stack **stack_b);
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b, int *args, int size_lst);
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current);
 
 int		get_min(t_stack **stack);
 void	quick_sort(int *array, int start, int end);
