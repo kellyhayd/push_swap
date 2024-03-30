@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	char	**array;
 
 	stack_a = NULL;
+	stack_b = NULL;
 	array = NULL;
 	current = ft_calloc(sizeof(t_data), 1);
 	if (argc <= 1)
