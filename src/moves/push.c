@@ -20,7 +20,10 @@ static void	push(t_stack **stack_src, t_stack **stack_dest)
 		return ;
 	node_to_push = *stack_src;
 	*stack_src = (*stack_src)->next;
+	(*stack_src)->prev = NULL;
 	node_to_push->next = *stack_dest;
+	if (*stack_dest)
+		(*stack_dest)->prev = node_to_push;
 	*stack_dest = node_to_push;
 	update_idx(stack_src);
 	update_idx(stack_dest);
