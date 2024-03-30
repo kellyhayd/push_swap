@@ -31,8 +31,8 @@ typedef struct s_data
 	int		num_max;
 	int		idx;
 	int		size;
+	int		num_cur;
 	int		*args;
-	char	*array;
 }	t_data;
 
 
