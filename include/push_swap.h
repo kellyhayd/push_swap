@@ -84,10 +84,10 @@ void	update_idx(t_stack **stack);
 
 void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur);
 void	sort_two(t_stack **stack);
-void	sort_three(t_stack **stack);
-void	sort_four(t_stack **stack_a, t_stack **stack_b);
-void	sort_five(t_stack **stack_a, t_stack **stack_b);
-void	sort_ten(t_stack **stack_a, t_stack **stack_b);
+void	sort_three(t_stack **stack, t_data *cur);
+void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur);
+void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur);
+void	sort_ten(t_stack **stack_a, t_stack **stack_b, t_data *cur);
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current);
 
 int		get_min(t_stack **stack);
