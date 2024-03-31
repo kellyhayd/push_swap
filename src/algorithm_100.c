@@ -48,7 +48,7 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 	int	count;
 	t_stack	*tmp;
 
-	div = (current->size) / 4;
+	div = current->size / 4;
 	parcel = div;
 	while (parcel < (div * 4))
 	{
@@ -62,6 +62,7 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 				current->idx = tmp->idx;
 				current->num_cur = tmp->num;
 				count += send_to_b(stack_a, stack_b, current);
+				tmp = *stack_a;
 			}
 			else
 				tmp = tmp->next;
