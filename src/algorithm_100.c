@@ -32,7 +32,10 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *current)
 			direction = 2;
 		while ((*stack_b)->num != current->args[size_b - 1])
 		{
-			if (direction == 1)
+			if ((*stack_b)->next
+				&& (*stack_b)->next->num == current->args[size_b - 1])
+				sb(stack_b);
+			else if (direction == 1)
 				rrb(stack_b);
 			else if (direction == 2)
 				rb(stack_b);
@@ -78,9 +81,9 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 	int	count;
 	t_stack	*tmp;
 
-	div = cur->size / 4;
+	div = cur->size / 5;
 	parcel = div;
-	while (parcel < (div * 4))
+	while (parcel < (div * 5))
 	{
 		cur->num_max = cur->args[parcel];
 		tmp = *stack_a;
