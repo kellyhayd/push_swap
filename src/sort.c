@@ -33,13 +33,13 @@ void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur)
 	if (size_lst == 2)
 		sort_two(stack_a);
 	if (size_lst == 3)
-		sort_three(stack_a);
+		sort_three(stack_a, cur);
 	if (size_lst == 4)
-		sort_four(stack_a, stack_b);
+		sort_four(stack_a, stack_b, cur);
 	if (size_lst == 5)
-		sort_five(stack_a, stack_b);
+		sort_five(stack_a, stack_b, cur);
 	if (size_lst > 5 && size_lst <= 10)
-		sort_ten(stack_a, stack_b);
+		sort_ten(stack_a, stack_b, cur);
 	if (size_lst > 10 && size_lst <= 100)
 	{
 		convert_to_int(arr, cur);
