@@ -12,15 +12,20 @@
 
 #include "push_swap.h"
 
+// void	order_stack_a(t_stack **stack_a)
+// {
+
+// }
+
 int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
-	int	proximity;
+	int	middle;
 	int	direction;
 	int	count;
 
 	count = 0;
-	proximity = (current->size - 1) / 2;
-	if (current->idx >= proximity)
+	middle = (current->size - 1) / 2;
+	if (current->idx >= middle)
 		direction = 1;
 	else
 		direction = 2;
@@ -37,9 +42,8 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
-	count++;
 	current->size = lstsize(*stack_a);
-	return (count);
+	return (++count);
 }
 
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
