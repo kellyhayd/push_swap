@@ -35,9 +35,9 @@ void	sort_ten(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->num != min)
 		{
 			if (direction == 1)
-				ra(stack_a);
-			else
 				rra(stack_a);
+			else
+				ra(stack_a);
 		}
 		pb(stack_a, stack_b);
 		size = lstsize(*stack_a);
