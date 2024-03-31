@@ -12,6 +12,14 @@
 
 #include "push_swap.h"
 
+void	sort_two(t_stack **stack)
+{
+	if ((*stack)->num > (*stack)->next->num)
+		sa(stack);
+	else
+		return ;
+}
+
 static int	define_case(t_stack **stack)
 {
 	if ((*stack)->num < (*stack)->next->num
@@ -36,22 +44,29 @@ static int	define_case(t_stack **stack)
 void	sort_three(t_stack **stack)
 {
 	int	n;
+	int	size;
 
-	n = define_case(stack);
-	if (n == 1)
+	size = lstsize(*stack);
+	if (size == 3)
 	{
-		sa(stack);
-		ra(stack);
+		n = define_case(stack);
+		if (n == 1)
+		{
+			sa(stack);
+			ra(stack);
+		}
+		else if (n == 2)
+			sa(stack);
+		else if (n == 3)
+			rra(stack);
+		else if (n == 4)
+			ra(stack);
+		else if (n == 5)
+		{
+			sa(stack);
+			rra(stack);
+		}
 	}
-	else if (n == 2)
-		sa(stack);
-	else if (n == 3)
-		rra(stack);
-	else if (n == 4)
-		ra(stack);
-	else if (n == 5)
-	{
-		sa(stack);
-		rra(stack);
-	}
+	else if (size == 2)
+		sort_two(stack);
 }

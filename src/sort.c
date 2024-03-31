@@ -30,6 +30,8 @@ void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur)
 	int	size_lst;
 
 	size_lst = cur->size;
+	if (size_lst == 2)
+		sort_two(stack_a);
 	if (size_lst == 3)
 		sort_three(stack_a);
 	if (size_lst == 4)

@@ -17,7 +17,7 @@ void	sort_ten(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*node_min;
 	int		min;
 	int		size;
-	int		proximity;
+	int		middle;
 	int		direction;
 
 	size = lstsize(*stack_a);
@@ -27,8 +27,8 @@ void	sort_ten(t_stack **stack_a, t_stack **stack_b)
 		node_min = *stack_a;
 		while (node_min->num != min)
 			node_min = node_min->next;
-		proximity = (size - 1) / 2;
-		if (node_min->idx >= proximity)
+		middle = (size - 1) / 2;
+		if (node_min->idx >= middle)
 			direction = 1;
 		else
 			direction = 2;

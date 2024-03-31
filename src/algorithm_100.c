@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-// void	order_stack_a(t_stack **stack_a)
-// {
-
-// }
-
 int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
 	int	middle;
@@ -52,7 +47,6 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 	int	parcel;
 	int	count;
 	t_stack	*tmp;
-	t_stack	*tmp2;
 
 	div = (current->size) / 4;
 	parcel = div;
@@ -74,18 +68,5 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 		}
 		parcel += div;
 	}
-	tmp = *stack_a;
-	printf("\nstack_a ");
-	while (tmp)
-	{
-		printf("%d ", (tmp)->num);
-		(tmp) = (tmp)->next;
-	}
-	printf("\nstack_b ");
-	tmp2 = *stack_b;
-	while (tmp2)
-	{
-		printf("%d ", (tmp2)->num);
-		(tmp2) = (tmp2)->next;
-	}
+	// sort_ten(stack_a, stack_b);
 }

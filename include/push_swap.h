@@ -83,6 +83,7 @@ void	sb(t_stack **stack);
 void	update_idx(t_stack **stack);
 
 void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur);
+void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);

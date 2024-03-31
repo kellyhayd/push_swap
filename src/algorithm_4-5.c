@@ -15,18 +15,23 @@
 void	sort_four(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
+	int	size;
 
 	min = get_min(stack_a);
-	if ((*stack_a)->next->num == min)
-		sa(stack_a);
-	else if ((*stack_a)->next->next->num == min)
+	size = lstsize(*stack_a);
+	if (size == 4)
 	{
-		ra(stack_a);
-		ra(stack_a);
+		if ((*stack_a)->next->num == min)
+			sa(stack_a);
+		else if ((*stack_a)->next->next->num == min)
+		{
+			ra(stack_a);
+			ra(stack_a);
+		}
+		else if ((*stack_a)->next->next->next->num == min)
+			rra(stack_a);
+		pb(stack_a, stack_b);
 	}
-	else if ((*stack_a)->next->next->next->num == min)
-		rra(stack_a);
-	pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
 }
@@ -34,23 +39,28 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
+	int	size;
 
 	min = get_min(stack_a);
-	if ((*stack_a)->next->num == min)
-		sa(stack_a);
-	else if ((*stack_a)->next->next->num == min)
+	size = lstsize(*stack_a);
+	if (size == 5)
 	{
-		ra(stack_a);
-		ra(stack_a);
+		if ((*stack_a)->next->num == min)
+			sa(stack_a);
+		else if ((*stack_a)->next->next->num == min)
+		{
+			ra(stack_a);
+			ra(stack_a);
+		}
+		else if ((*stack_a)->next->next->next->num == min)
+		{
+			rra(stack_a);
+			rra(stack_a);
+		}
+		else if ((*stack_a)->next->next->next->next->num == min)
+			rra(stack_a);
+		pb(stack_a, stack_b);
 	}
-	else if ((*stack_a)->next->next->next->num == min)
-	{
-		rra(stack_a);
-		rra(stack_a);
-	}
-	else if ((*stack_a)->next->next->next->next->num == min)
-		rra(stack_a);
-	pb(stack_a, stack_b);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
