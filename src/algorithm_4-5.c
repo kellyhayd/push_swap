@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void	sort_four(t_stack **stack_a, t_stack **stack_b)
+void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 {
 	int	min;
-	int	size;
+	int	needs_pa;
 
 	min = get_min(stack_a);
-	size = lstsize(*stack_a);
-	if (size == 4)
+	needs_pa = 0;
+	if (cur->size == 4)
 	{
 		if ((*stack_a)->next->num == min)
 			sa(stack_a);
@@ -31,19 +31,22 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 		else if ((*stack_a)->next->next->next->num == min)
 			rra(stack_a);
 		pb(stack_a, stack_b);
+		needs_pa = 1;
 	}
-	sort_three(stack_a);
-	pa(stack_a, stack_b);
+	cur->size = lstsize(*stack_a);
+	sort_three(stack_a, cur);
+	if (needs_pa)
+		pa(stack_a, stack_b);
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b)
+void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 {
 	int	min;
-	int	size;
+	int	needs_pa;
 
 	min = get_min(stack_a);
-	size = lstsize(*stack_a);
-	if (size == 5)
+	needs_pa = 0;
+	if (cur->size == 5)
 	{
 		if ((*stack_a)->next->num == min)
 			sa(stack_a);
@@ -60,7 +63,10 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		else if ((*stack_a)->next->next->next->next->num == min)
 			rra(stack_a);
 		pb(stack_a, stack_b);
+		needs_pa = 1;
 	}
-	sort_four(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	cur->size = lstsize(*stack_a);
+	sort_four(stack_a, stack_b, cur);
+	if (needs_pa)
+		pa(stack_a, stack_b);
 }

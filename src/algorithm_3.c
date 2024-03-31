@@ -41,13 +41,11 @@ static int	define_case(t_stack **stack)
 	return (-1);
 }
 
-void	sort_three(t_stack **stack)
+void	sort_three(t_stack **stack, t_data *cur)
 {
 	int	n;
-	int	size;
 
-	size = lstsize(*stack);
-	if (size == 3)
+	if (cur->size == 3)
 	{
 		n = define_case(stack);
 		if (n == 1)
@@ -67,6 +65,6 @@ void	sort_three(t_stack **stack)
 			rra(stack);
 		}
 	}
-	else if (size == 2)
+	else if (cur->size == 2)
 		sort_two(stack);
 }
