@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack	*tmp;
+	// t_stack	*tmp;
 	t_data	*current;
 	char	**array;
 
@@ -51,22 +51,22 @@ int	main(int argc, char **argv)
 	if (is_ordered(array))
 		return (1);
 	current->size = stack_create(array, &stack_a);
-	tmp = stack_a;
-	while (tmp)
-	{
-		printf("%d ", tmp->num);
-		tmp = tmp->next;
-	}
+	// tmp = stack_a;
+	// while (tmp)
+	// {
+	// 	printf("%d ", tmp->num);
+	// 	tmp = tmp->next;
+	// }
 	def_sort(&stack_a, &stack_b, array, current);
 	free_array(array);
-	printf("\n");
-	tmp = stack_a;
-	while (tmp)
-	{
-		printf("%d ", tmp->num);
-		tmp = tmp->next;
-	}
-	printf("\n");
+	// printf("\n");
+	// tmp = stack_a;
+	// while (tmp)
+	// {
+	// 	printf("%d ", tmp->num);
+	// 	tmp = tmp->next;
+	// }
+	// printf("\n");
 	lstclear(&stack_a, free);
 	return (0);
 }
