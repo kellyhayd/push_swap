@@ -12,11 +12,13 @@
 
 #include "push_swap.h"
 
-void	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
+int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
 	int	proximity;
 	int	direction;
+	int	count;
 
+	count = 0;
 	proximity = (current->size - 1) / 2;
 	if (current->idx >= proximity)
 		direction = 1;
@@ -24,43 +26,49 @@ void	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 		direction = 2;
 	while ((*stack_a)->num != current->num_cur)
 	{
-		if ((*stack_a)->num <= current->num_max && (*stack_a)->idx == 0)
+		if ((*stack_a)->num < current->num_max)
+		{
 			pb(stack_a, stack_b);
+			count++;
+		}
 		else if (direction == 1)
 			rra(stack_a);
 		else if (direction == 2)
 			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
+	count++;
+	current->size = lstsize(*stack_a);
+	return (count);
 }
 
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current)
 {
 	int	div;
 	int	parcel;
+	int	count;
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
 	div = (current->size) / 4;
 	parcel = div;
-	current->num_max = current->args[div - 1];
-	tmp = *stack_a;
-	while (tmp)
+	while (parcel < (div * 4))
 	{
-		while (current->size >= (current->size - div))
+		current->num_max = current->args[parcel];
+		tmp = *stack_a;
+		count = 0;
+		while (count < div)
 		{
-			if (tmp->num <= current->num_max)
+			if (tmp->num < current->num_max)
 			{
 				current->idx = tmp->idx;
 				current->num_cur = tmp->num;
-				send_to_b(stack_a, stack_b, current);
-				current->size = lstsize(*stack_a);
+				count += send_to_b(stack_a, stack_b, current);
 			}
 			else
 				tmp = tmp->next;
 		}
 		parcel += div;
-		current->num_max = current->args[parcel - 1];
 	}
 	tmp = *stack_a;
 	printf("\nstack_a ");
