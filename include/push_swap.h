@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 16:58:02 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 10:57:06 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	lstclear(t_stack **lst, void (*del)(void*));
 
 char	**copy_argv(char **argv);
 void	free_array(char **array);
+
+char	**args_string(char **argv);
+char	**args_individuals(char **argv);
 
 int		is_ordered(char **argv);
 

@@ -30,6 +30,7 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			./init/lst_utils.c \
 			./init/stack_format.c \
 			./init/validation.c \
+			./init/process_args.c \
 			./moves/moves_utils.c \
 			./moves/swap.c \
 			./moves/push.c \
