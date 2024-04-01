@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:31:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 14:33:41 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:52:36 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *data)
 	}
 	if (size_lst > 100)
 	{
-		data->def_algo = 12;
+		data->def_algo = 13;
 		prep(stack_a, stack_b, arr, data);
 	}
+	free(data->args);
 }
