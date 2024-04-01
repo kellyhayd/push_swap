@@ -6,13 +6,13 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:13:51 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 17:54:34 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 11:03:05 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *current)
+void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *info)
 {
 	int		middle;
 	int		size_b;
@@ -24,16 +24,16 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *current)
 	{
 		middle = size_b / 2;
 		node_max = *stack_b;
-		while (node_max->num != current->args[size_b - 1])
+		while (node_max->num != info->args[size_b - 1])
 			node_max = node_max->next;
 		if (node_max->idx >= middle)
 			direction = 1;
 		else
 			direction = 2;
-		while ((*stack_b)->num != current->args[size_b - 1])
+		while ((*stack_b)->num != info->args[size_b - 1])
 		{
 			if ((*stack_b)->next
-				&& (*stack_b)->next->num == current->args[size_b - 1])
+				&& (*stack_b)->next->num == info->args[size_b - 1])
 				sb(stack_b);
 			else if (direction == 1)
 				rrb(stack_b);
@@ -45,21 +45,21 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *current)
 	}
 }
 
-int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
+int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *info)
 {
 	int	middle;
 	int	direction;
 	int	count;
 
 	count = 0;
-	middle = (current->size - 1) / 2;
-	if (current->idx >= middle)
+	middle = (info->size_now - 1) / 2;
+	if (info->idx_now >= middle)
 		direction = 1;
 	else
 		direction = 2;
-	while ((*stack_a)->num != current->num_cur)
+	while ((*stack_a)->num != info->num_now)
 	{
-		if ((*stack_a)->num < current->num_max)
+		if ((*stack_a)->num < info->num_max)
 		{
 			pb(stack_a, stack_b);
 			count++;
@@ -70,31 +70,31 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *current)
 			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
-	current->size = lstsize(*stack_a);
+	info->size_now = lstsize(*stack_a);
 	return (++count);
 }
 
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *cur)
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *info)
 {
-	int	div;
-	int	parcel;
-	int	count;
+	int		div;
+	int		parcel;
+	int		count;
 	t_stack	*tmp;
 
-	div = cur->size / 5;
+	div = info->size_now / 5;
 	parcel = div;
 	while (parcel < (div * 5))
 	{
-		cur->num_max = cur->args[parcel];
+		info->num_max = info->args[parcel];
 		tmp = *stack_a;
 		count = 0;
 		while (count < div)
 		{
-			if (tmp->num < cur->num_max)
+			if (tmp->num < info->num_max)
 			{
-				cur->idx = tmp->idx;
-				cur->num_cur = tmp->num;
-				count += send_to_b(stack_a, stack_b, cur);
+				info->idx_now = tmp->idx;
+				info->num_now = tmp->num;
+				count += send_to_b(stack_a, stack_b, info);
 				tmp = *stack_a;
 			}
 			else
@@ -102,7 +102,7 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 		}
 		parcel += div;
 	}
-	cur->size = lstsize(*stack_a);
-	sort_ten(stack_a, stack_b, cur);
-	push_back(stack_a, stack_b, cur);
+	info->size_now = lstsize(*stack_a);
+	sort_ten(stack_a, stack_b, info);
+	push_back(stack_a, stack_b, info);
 }
