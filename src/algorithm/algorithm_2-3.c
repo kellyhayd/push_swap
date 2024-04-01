@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_three.c                                  :+:      :+:    :+:   */
+/*   algorithm_2-3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:45:56 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 16:05:41 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static int	define_case(t_stack **stack)
 	return (-1);
 }
 
-void	sort_three(t_stack **stack, t_data *cur)
+void	sort_three(t_stack **stack, t_data *data)
 {
 	int	n;
 
-	if (cur->size == 3)
+	if (data->size_now == 3)
 	{
 		n = define_case(stack);
 		if (n == 1)
@@ -65,6 +65,6 @@ void	sort_three(t_stack **stack, t_data *cur)
 			rra(stack);
 		}
 	}
-	else if (cur->size == 2)
+	else if (data->size_now == 2)
 		sort_two(stack);
 }

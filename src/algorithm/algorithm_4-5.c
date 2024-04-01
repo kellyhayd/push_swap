@@ -6,20 +6,20 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:58:23 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 10:49:35 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur)
+void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int	min;
 	int	needs_pa;
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (cur->size == 4)
+	if (data->size_now == 4)
 	{
 		if ((*stack_a)->next->num == min)
 			sa(stack_a);
@@ -33,20 +33,20 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 		pb(stack_a, stack_b);
 		needs_pa = 1;
 	}
-	cur->size = lstsize(*stack_a);
-	sort_three(stack_a, cur);
+	data->size_now = lstsize(*stack_a);
+	sort_three(stack_a, data);
 	if (needs_pa)
 		pa(stack_a, stack_b);
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur)
+void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int	min;
 	int	needs_pa;
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (cur->size == 5)
+	if (data->size_now == 5)
 	{
 		if ((*stack_a)->next->num == min)
 			sa(stack_a);
@@ -65,8 +65,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur)
 		pb(stack_a, stack_b);
 		needs_pa = 1;
 	}
-	cur->size = lstsize(*stack_a);
-	sort_four(stack_a, stack_b, cur);
+	data->size_now = lstsize(*stack_a);
+	sort_four(stack_a, stack_b, data);
 	if (needs_pa)
 		pa(stack_a, stack_b);
 }

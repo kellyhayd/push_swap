@@ -6,44 +6,44 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:31:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 17:16:03 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	convert_to_int(char **arr, t_data *current)
+void	convert_to_int(char **arr, t_data *data)
 {
 	int	i;
 
-	current->args = ft_calloc(sizeof(int), current->size);
+	data->args = ft_calloc(sizeof(int), data->size_now);
 	i = 0;
 	while (arr[i])
 	{
-		current->args[i] = ft_atoi(arr[i]);
+		data->args[i] = ft_atoi(arr[i]);
 		i++;
 	}
 }
 
-void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur)
+void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *data)
 {
 	int	size_lst;
 
-	size_lst = cur->size;
+	size_lst = data->size_now;
 	if (size_lst == 2)
 		sort_two(stack_a);
 	if (size_lst == 3)
-		sort_three(stack_a, cur);
+		sort_three(stack_a, data);
 	if (size_lst == 4)
-		sort_four(stack_a, stack_b, cur);
+		sort_four(stack_a, stack_b, data);
 	if (size_lst == 5)
-		sort_five(stack_a, stack_b, cur);
+		sort_five(stack_a, stack_b, data);
 	if (size_lst > 5 && size_lst <= 10)
-		sort_ten(stack_a, stack_b, cur);
+		sort_ten(stack_a, stack_b, data);
 	if (size_lst > 10 && size_lst <= 100)
 	{
-		convert_to_int(arr, cur);
-		quick_sort(cur->args, 0, size_lst - 1);
-		sort_hundred(stack_a, stack_b, cur);
+		convert_to_int(arr, data);
+		quick_sort(data->args, 0, size_lst - 1);
+		sort_hundred(stack_a, stack_b, data);
 	}
 }
