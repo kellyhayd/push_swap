@@ -6,11 +6,25 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:13:51 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 13:08:52 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	move_to_top(t_stack **stack_b, t_data *data, int dir, int size)
+{
+	while ((*stack_b)->num != data->args[size - 1])
+	{
+		if ((*stack_b)->next
+			&& (*stack_b)->next->num == data->args[size - 1])
+			sb(stack_b);
+		else if (dir == 1)
+			rrb(stack_b);
+		else if (dir == 2)
+			rb(stack_b);
+	}
+}
 
 void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
@@ -30,16 +44,7 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			direction = 1;
 		else
 			direction = 2;
-		while ((*stack_b)->num != data->args[size_b - 1])
-		{
-			if ((*stack_b)->next
-				&& (*stack_b)->next->num == data->args[size_b - 1])
-				sb(stack_b);
-			else if (direction == 1)
-				rrb(stack_b);
-			else if (direction == 2)
-				rb(stack_b);
-		}
+		move_to_top(stack_b, data, direction, size_b);
 		pa(stack_a, stack_b);
 		size_b--;
 	}
@@ -74,21 +79,20 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	return (++count);
 }
 
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	move_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
-	int		div;
 	int		parcel;
 	int		count;
 	t_stack	*tmp;
 
-	div = data->size_now / 5;
-	parcel = div;
-	while (parcel < (div * 5))
+	data->div = data->size_now / data->def_algo;
+	parcel = data->div;
+	while (parcel < (data->div * data->def_algo))
 	{
 		data->num_max = data->args[parcel];
 		tmp = *stack_a;
 		count = 0;
-		while (count < div)
+		while (count < data->div)
 		{
 			if (tmp->num < data->num_max)
 			{
@@ -100,8 +104,13 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			else
 				tmp = tmp->next;
 		}
-		parcel += div;
+		parcel += data->div;
 	}
+}
+
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
+{
+	move_hundred(stack_a, stack_b, data);
 	data->size_now = lstsize(*stack_a);
 	sort_ten(stack_a, stack_b, data);
 	push_back(stack_a, stack_b, data);

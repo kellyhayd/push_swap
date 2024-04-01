@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:31:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:33:41 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ void	convert_to_int(char **arr, t_data *data)
 		data->args[i] = ft_atoi(arr[i]);
 		i++;
 	}
+}
+
+void	prep(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *data)
+{
+	convert_to_int(arr, data);
+	quick_sort(data->args, 0, data->size_now - 1);
+	sort_hundred(stack_a, stack_b, data);
 }
 
 void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *data)
@@ -42,8 +49,12 @@ void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *data)
 		sort_ten(stack_a, stack_b, data);
 	if (size_lst > 10 && size_lst <= 100)
 	{
-		convert_to_int(arr, data);
-		quick_sort(data->args, 0, size_lst - 1);
-		sort_hundred(stack_a, stack_b, data);
+		data->def_algo = 5;
+		prep(stack_a, stack_b, arr, data);
+	}
+	if (size_lst > 100)
+	{
+		data->def_algo = 12;
+		prep(stack_a, stack_b, arr, data);
 	}
 }

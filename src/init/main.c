@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:51:56 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_data	*data;
+	int		i;
 	char	**array;
 
 	stack_a = NULL;
@@ -35,5 +36,6 @@ int	main(int argc, char **argv)
 	def_sort(&stack_a, &stack_b, array, data);
 	free_array(array);
 	lstclear(&stack_a, free);
+	free(data);
 	return (0);
 }

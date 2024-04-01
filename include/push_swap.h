@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 11:37:28 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/01 13:05:29 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_data
 	int		num_now;
 	int		idx_now;
 	int		size_now;
+	int		def_algo;
 	int		*args;
 }	t_data;
-
 
 //--------------------------------------- Validate
 
