@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 13:05:29 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:11:34 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 {
 	int				num;
 	int				idx;
+	char			*move;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
