@@ -6,11 +6,25 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:13:51 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/03 15:25:36 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:53:58 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	move_to_top(t_stack **stack_b, t_data *data, int dir, int size)
+{
+	while ((*stack_b)->num != data->args[size - 1])
+	{
+		if ((*stack_b)->next
+			&& (*stack_b)->next->num == data->args[size - 1])
+			sb(stack_b);
+		else if (dir == 1)
+			rrb(stack_b);
+		else if (dir == 2)
+			rb(stack_b);
+	}
+}
 
 void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
@@ -36,49 +50,44 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	}
 }
 
-int		define_direction(t_stack **stack, t_data *data, int	idx)
+int	define_direction(int cost_top, int cost_tail)
 {
-	int	size;
-	int	middle;
 	int	direction;
 
-	size = lstsize(stack);
-	middle = size / 2;
-	if (idx <= middle)
+	direction = -1;
+	if (cost_top <= cost_tail || cost_tail == -1)
 		direction = 1;
-	if (idx > middle)
+	else if (cost_tail < cost_top || cost_top == -1)
 		direction = 2;
+	return (direction);
 }
 
-void	define_position(t_stack **stack_a, t_stack **stack_b, t_data *data)
+int	calculate_dir(t_stack *stack, int size, int num, t_data *data)
 {
-	t_stack	*tmp;
-	int		cost;
-	int		imediate;
-	int		idx;
-	int		size_b;
+	int	cost_top;
+	int	cost_tail;
+	int	direction;
 
-	size_b = lstsize(*stack_b);
-	tmp = *stack_b;
-	if (tmp->num > data->num_now)
+	cost_top = 0;
+	cost_tail = 0;
+	while (stack->idx < (size / 2) && stack->num > num)
+		stack = stack->next;
+	if (stack->num <= num)
 	{
-		cost = 0;
-		while (tmp->num > data->num_now && tmp->idx <= (size_b / 2))
-			tmp = tmp->next;
-		cost = tmp->idx;
-		imediate = tmp->num;
-		idx = tmp->idx;
+		cost_top = stack->idx;
+		data->tmp_top = stack->num;
 	}
-	tmp = *stack_b;
-	if (tmp->num < data->num_now)
+	while (stack->next)
+		stack = stack->next;
+	while (stack->idx > (size / 2) && stack->num > num)
+		stack = stack->prev;
+	if (stack->num <= num)
 	{
-		while (tmp->num < data->num_now)
-			tmp = tmp->next;
-		cost = size_b - tmp->idx;
-		imediate = tmp->num;
-		idx = tmp->idx;
+		cost_tail = size - stack->idx;
+		data->tmp_tail = stack->num;
 	}
-
+	direction = define_direction(cost_top, cost_tail);
+	return (direction);
 }
 
 int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int direction)
@@ -103,10 +112,6 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int		parcel;
 	int		count;
-	int		cost_up;
-	int		cost_down;
-	int		tmp_up;
-	int		tmp_down;
 	int		direction;
 	t_stack	*tmp;
 
@@ -120,37 +125,12 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		count = 0;
 		while (count < data->div)
 		{
-			cost_up = -1;
-			cost_down = -1;
-			tmp = *stack_a;
-			while (tmp->idx < (data->size_now / 2) && tmp->num > data->num_max)
-				tmp = tmp->next;
-			if (tmp->num <= data->num_max)
-			{
-				cost_up = tmp->idx;
-				tmp_up = tmp->num;
-			}
-			while (tmp->next)
-				tmp = tmp->next;
-			while (tmp->idx > (data->size_now / 2) && tmp->num > data->num_max)
-				tmp = tmp->prev;
-			if (tmp->num <= data->num_max)
-			{
-				cost_down = data->size_now - tmp->idx;
-				tmp_down = tmp->num;
-			}
-			if (cost_up <= cost_down || cost_down == -1)
-			{
-				direction = 1;
-				data->num_now = tmp_up;
-				count += send_to_b(stack_a, stack_b, data, direction);
-			}
-			else if (cost_down < cost_up || cost_up == -1)
-			{
-				direction = 2;
-				data->num_now = tmp_down;
-				count += send_to_b(stack_a, stack_b, data, direction);
-			}
+			direction = calculate_dir(tmp, data->size_now, data->num_max, data);
+			if (direction == 1)
+				data->num_now = data->tmp_top;
+			else if (direction == 2)
+				data->num_now = data->tmp_tail;
+			count += send_to_b(stack_a, stack_b, data, direction);
 		}
 		parcel += data->div;
 		if (parcel > data->size_init)
