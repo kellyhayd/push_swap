@@ -36,12 +36,12 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			./moves/push.c \
 			./moves/reverse_rotate.c \
 			./moves/rotate.c \
-			./algorithm/algorithm_2-3.c \
-			./algorithm/algorithm_4-5.c \
-			./algorithm/algorithm_10.c \
-			./algorithm/algorithm_100.c \
-			./algorithm/quick_sort.c \
-			./algorithm/sort.c)
+			./algorithm2/algorithm_2-3.c \
+			./algorithm2/algorithm_4-5.c \
+			./algorithm2/algorithm_10.c \
+			./algorithm2/algorithm_100.c \
+			./algorithm2/quick_sort.c \
+			./algorithm2/sort.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
