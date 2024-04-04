@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-void	move_to_top(t_stack **stack_b, t_data *data, int dir, int size)
+void	move_to_top(t_stack **stack_b, t_data *data, int size)
 {
 	while ((*stack_b)->num != data->args[size - 1])
 	{
 		if ((*stack_b)->next
 			&& (*stack_b)->next->num == data->args[size - 1])
 			sb(stack_b);
-		else if (dir == 1)
+		else if (data->direction == 1)
 			rrb(stack_b);
-		else if (dir == 2)
+		else if (data->direction == 2)
 			rb(stack_b);
 	}
 }
@@ -30,7 +30,6 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int		middle;
 	int		size_b;
-	int		direction;
 	t_stack	*node_max;
 
 	size_b = lstsize(*stack_b);
@@ -41,32 +40,28 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		while (node_max->num != data->args[size_b - 1])
 			node_max = node_max->next;
 		if (node_max->idx >= middle)
-			direction = 1;
+			data->direction = 1;
 		else
-			direction = 2;
-		move_to_top(stack_b, data, direction, size_b);
+			data->direction = 2;
+		move_to_top(stack_b, data, size_b);
 		pa(stack_a, stack_b);
 		size_b--;
 	}
 }
 
-int	define_direction(int cost_top, int cost_tail)
+void	define_direction(int cost_top, int cost_tail, t_data *data)
 {
-	int	direction;
-
-	direction = -1;
+	data->direction = -1;
 	if ((cost_top <= cost_tail && cost_top != -1 ) || cost_tail == -1)
-		direction = 1;
+		data->direction = 1;
 	else if ((cost_tail < cost_top && cost_tail != -1) || cost_top == -1)
-		direction = 2;
-	return (direction);
+		data->direction = 2;
 }
 
-int	calculate_dir(t_stack *stack, int size, int num, t_data *data)
+void	calculate_dir(t_stack *stack, int size, int num, t_data *data)
 {
 	int	cost_top;
 	int	cost_tail;
-	int	direction;
 
 	cost_top = -1;
 	cost_tail = -1;
@@ -86,20 +81,19 @@ int	calculate_dir(t_stack *stack, int size, int num, t_data *data)
 		cost_tail = size - stack->idx;
 		data->tmp_tail = stack->num;
 	}
-	direction = define_direction(cost_top, cost_tail);
-	return (direction);
+	define_direction(cost_top, cost_tail, data);
 }
 
-int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int direction)
+int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int	count;
 
 	count = 0;
 	while ((*stack_a)->num != data->num_now)
 	{
-		if (direction == 1)
+		if (data->direction == 1)
 			ra(stack_a);
-		else if (direction == 2)
+		else if (data->direction == 2)
 			rra(stack_a);
 	}
 	pb(stack_a, stack_b);
@@ -112,7 +106,6 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int		parcel;
 	int		count;
-	int		direction;
 	t_stack	*tmp;
 
 	data->div = data->size_now / data->def_algo;
@@ -125,12 +118,12 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		while (*stack_a && count < data->div)
 		{
 			tmp = *stack_a;
-			direction = calculate_dir(tmp, data->size_now, data->num_max, data);
-			if (direction == 1)
+			calculate_dir(tmp, data->size_now, data->num_max, data);
+			if (data->direction == 1)
 				data->num_now = data->tmp_top;
-			else if (direction == 2)
+			else if (data->direction == 2)
 				data->num_now = data->tmp_tail;
-			count += send_to_b(stack_a, stack_b, data, direction);
+			count += send_to_b(stack_a, stack_b, data);
 		}
 		parcel += data->div;
 		if (parcel > data->size_init)
@@ -141,6 +134,5 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	calc_moves(stack_a, stack_b, data);
-	// sort_ten(stack_a, stack_b, data);
 	push_back(stack_a, stack_b, data);
 }

@@ -38,6 +38,7 @@ typedef struct s_data
 	int		def_algo;
 	int		tmp_top;
 	int		tmp_tail;
+	int		direction;
 	int		*args;
 }	t_data;
 
