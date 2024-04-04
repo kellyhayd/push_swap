@@ -22,6 +22,7 @@ typedef struct s_stack
 {
 	int				num;
 	int				idx;
+	int				cost;
 	char			*move;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -29,17 +30,19 @@ typedef struct s_stack
 
 typedef struct s_data
 {
-	int		div;
-	int		num_max;
-	int		num_now;
-	int		idx_now;
-	int		size_init;
-	int		size_now;
-	int		def_algo;
-	int		tmp_top;
-	int		tmp_tail;
-	int		direction;
-	int		*args;
+	int	div;
+	int	immediate;
+	int	num_max;
+	int	num_now;
+	int	idx_now;
+	int	size_init;
+	int	asize_now;
+	int	bsize_now;
+	int	def_div;
+	int	tmp_top;
+	int	tmp_tail;
+	int	direction;
+	int	*args;
 }	t_data;
 
 //--------------------------------------- Validate

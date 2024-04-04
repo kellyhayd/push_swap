@@ -45,7 +45,7 @@ void	sort_three(t_stack **stack, t_data *data)
 {
 	int	n;
 
-	if (data->size_now == 3)
+	if (data->asize_now == 3)
 	{
 		n = define_case(stack);
 		if (n == 1)
@@ -65,6 +65,6 @@ void	sort_three(t_stack **stack, t_data *data)
 			rra(stack);
 		}
 	}
-	else if (data->size_now == 2)
+	else if (data->asize_now == 2)
 		sort_two(stack);
 }

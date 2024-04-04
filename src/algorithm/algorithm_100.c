@@ -57,7 +57,7 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	int	count;
 
 	count = 0;
-	middle = (data->size_now - 1) / 2;
+	middle = (data->asize_now - 1) / 2;
 	if (data->idx_now >= middle)
 		direction = 1;
 	else
@@ -75,7 +75,7 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
-	data->size_now = lstsize(*stack_a);
+	data->asize_now = lstsize(*stack_a);
 	return (++count);
 }
 
@@ -85,9 +85,9 @@ void	move_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	int		count;
 	t_stack	*tmp;
 
-	data->div = data->size_now / data->def_algo;
+	data->div = data->asize_now / data->def_div;
 	parcel = data->div;
-	while (parcel < (data->div * data->def_algo))
+	while (parcel < (data->div * data->def_div))
 	{
 		data->num_max = data->args[parcel];
 		tmp = *stack_a;
@@ -111,7 +111,7 @@ void	move_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	move_hundred(stack_a, stack_b, data);
-	data->size_now = lstsize(*stack_a);
+	data->asize_now = lstsize(*stack_a);
 	sort_ten(stack_a, stack_b, data);
 	push_back(stack_a, stack_b, data);
 }

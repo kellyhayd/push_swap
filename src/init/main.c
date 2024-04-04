@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		array = args_string(argv);
 	if (is_ordered(array))
 		return (0);
-	data->size_now = stack_create(array, &stack_a);
+	data->asize_now = stack_create(array, &stack_a);
 	def_sort(&stack_a, &stack_b, array, data);
 	free_array(array);
 	lstclear(&stack_a, free);

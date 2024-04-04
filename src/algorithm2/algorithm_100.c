@@ -49,6 +49,78 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	}
 }
 
+void	back_to_top(t_stack **stack)
+{
+	while ((*stack)->prev)
+		*stack = (*stack)->prev;
+}
+
+void	position_to(t_stack **stack_b, t_data *data)
+{
+	data->bsize_now = lstsize(*stack_b);
+	while ((*stack_b)->next)
+	{
+		if ((*stack_b)->num > data->num_now)
+		{
+			while ((*stack_b)->next && (*stack_b)->num > data->num_now)
+				(*stack_b) = (*stack_b)->next;
+			(*stack_b)->cost = (*stack_b)->idx;
+		}
+		else if ((*stack_b)->num < data->num_now)
+		{
+			while ((*stack_b)->next && (*stack_b)->num < data->num_now)
+				(*stack_b) = (*stack_b)->next;
+			(*stack_b)->cost = (*stack_b)->idx;
+		}
+	}
+	if ((*stack_b)->idx > (data->bsize_now / 2))
+	{
+		(*stack_b)->cost = data->bsize_now - (*stack_b)->idx;
+		(*stack_b)->move = "rrb";
+	}
+	else
+		(*stack_b)->move = "rb";
+	data->immediate = (*stack_b)->num;
+	back_to_top(stack_b);
+}
+
+void	position_b(t_stack **stack_b, t_data *data)
+{
+	t_stack	*tmp;
+
+	position_to(stack_b, data);
+	tmp = *stack_b;
+	while (tmp->num != data->immediate)
+		tmp = tmp->next;
+	while ((*stack_b)->num != data->immediate)
+	{
+		if (ft_strncmp(tmp->move, "rb", 2))
+			rb(stack_b);
+		else if (ft_strncmp(tmp->move, "rrb", 3))
+			rrb(stack_b);
+	}
+}
+
+int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
+{
+	int	count;
+
+	count = 0;
+	while ((*stack_a)->num != data->num_now)
+	{
+		if (data->direction == 1)
+			ra(stack_a);
+		else if (data->direction == 2)
+			rra(stack_a);
+	}
+	if (*stack_b)
+		position_b(stack_b, data);
+	pb(stack_a, stack_b);
+	count++;
+	data->asize_now = lstsize(*stack_a);
+	return (count);
+}
+
 void	define_direction(int cost_top, int cost_tail, t_data *data)
 {
 	data->direction = -1;
@@ -84,32 +156,14 @@ void	calculate_dir(t_stack *stack, int size, int num, t_data *data)
 	define_direction(cost_top, cost_tail, data);
 }
 
-int	send_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
-{
-	int	count;
-
-	count = 0;
-	while ((*stack_a)->num != data->num_now)
-	{
-		if (data->direction == 1)
-			ra(stack_a);
-		else if (data->direction == 2)
-			rra(stack_a);
-	}
-	pb(stack_a, stack_b);
-	count++;
-	data->size_now = lstsize(*stack_a);
-	return (count);
-}
-
 void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
 	int		parcel;
 	int		count;
 	t_stack	*tmp;
 
-	data->div = data->size_now / data->def_algo;
-	data->size_init = data->size_now;
+	data->div = data->asize_now / data->def_div;
+	data->size_init = data->asize_now;
 	parcel = data->div;
 	while (*stack_a)
 	{
@@ -118,7 +172,7 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		while (*stack_a && count < data->div)
 		{
 			tmp = *stack_a;
-			calculate_dir(tmp, data->size_now, data->num_max, data);
+			calculate_dir(tmp, data->asize_now, data->num_max, data);
 			if (data->direction == 1)
 				data->num_now = data->tmp_top;
 			else if (data->direction == 2)

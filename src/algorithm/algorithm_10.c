@@ -23,7 +23,7 @@ void	order_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	node_min = *stack_a;
 	while (node_min->num != min)
 		node_min = node_min->next;
-	middle = data->size_now / 2;
+	middle = data->asize_now / 2;
 	if (node_min->idx >= middle)
 		direction = 1;
 	else
@@ -36,7 +36,7 @@ void	order_to_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			ra(stack_a);
 	}
 	pb(stack_a, stack_b);
-	data->size_now = lstsize(*stack_a);
+	data->asize_now = lstsize(*stack_a);
 }
 
 void	sort_ten(t_stack **stack_a, t_stack **stack_b, t_data *data)
@@ -44,7 +44,7 @@ void	sort_ten(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	t_stack	*tmp_b;
 
 	tmp_b = *stack_b;
-	while (data->size_now > 5)
+	while (data->asize_now > 5)
 		order_to_b(stack_a, stack_b, data);
 	sort_five(stack_a, stack_b, data);
 	while (*stack_b != tmp_b)

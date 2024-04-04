@@ -19,7 +19,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *data)
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (data->size_now == 4)
+	if (data->asize_now == 4)
 	{
 		if ((*stack_a)->next->num == min)
 			sa(stack_a);
@@ -33,7 +33,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		pb(stack_a, stack_b);
 		needs_pa = 1;
 	}
-	data->size_now = lstsize(*stack_a);
+	data->asize_now = lstsize(*stack_a);
 	sort_three(stack_a, data);
 	if (needs_pa)
 		pa(stack_a, stack_b);
@@ -65,12 +65,12 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *data)
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (data->size_now == 5)
+	if (data->asize_now == 5)
 	{
 		move_five(stack_a, stack_b, min);
 		needs_pa = 1;
 	}
-	data->size_now = lstsize(*stack_a);
+	data->asize_now = lstsize(*stack_a);
 	sort_four(stack_a, stack_b, data);
 	if (needs_pa)
 		pa(stack_a, stack_b);
