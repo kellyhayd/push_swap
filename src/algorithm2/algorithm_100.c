@@ -55,9 +55,9 @@ int	define_direction(int cost_top, int cost_tail)
 	int	direction;
 
 	direction = -1;
-	if (cost_top <= cost_tail || cost_tail == -1)
+	if ((cost_top <= cost_tail && cost_top != -1 ) || cost_tail == -1)
 		direction = 1;
-	else if (cost_tail < cost_top || cost_top == -1)
+	else if ((cost_tail < cost_top && cost_tail != -1) || cost_top == -1)
 		direction = 2;
 	return (direction);
 }
@@ -68,9 +68,9 @@ int	calculate_dir(t_stack *stack, int size, int num, t_data *data)
 	int	cost_tail;
 	int	direction;
 
-	cost_top = 0;
-	cost_tail = 0;
-	while (stack->idx < (size / 2) && stack->num > num)
+	cost_top = -1;
+	cost_tail = -1;
+	while (stack->idx <= (size / 2) && stack->num > num)
 		stack = stack->next;
 	if (stack->num <= num)
 	{
@@ -121,10 +121,10 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 	while (*stack_a)
 	{
 		data->num_max = data->args[parcel - 1];
-		tmp = *stack_a;
 		count = 0;
-		while (count < data->div)
+		while (*stack_a && count < data->div)
 		{
+			tmp = *stack_a;
 			direction = calculate_dir(tmp, data->size_now, data->num_max, data);
 			if (direction == 1)
 				data->num_now = data->tmp_top;
@@ -134,7 +134,7 @@ void	calc_moves(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		}
 		parcel += data->div;
 		if (parcel > data->size_init)
-			parcel = data->size_now;
+			parcel = data->size_init;
 	}
 }
 
