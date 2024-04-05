@@ -41,7 +41,8 @@ SRC		= $(addprefix $(SRCS_PATH), \
 			./algorithm2/algorithm_10.c \
 			./algorithm2/algorithm_100.c \
 			./algorithm2/quick_sort.c \
-			./algorithm2/sort.c)
+			./algorithm2/sort.c \
+			./algorithm2/descending_order.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 

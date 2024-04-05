@@ -23,7 +23,8 @@ typedef struct s_stack
 	int				num;
 	int				idx;
 	int				cost;
-	char			*move;
+	int				direction;
+	struct s_stack	*immediate_b;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -101,6 +102,7 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur);
 void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur);
 void	sort_ten(t_stack **stack_a, t_stack **stack_b, t_data *cur);
 void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current);
+void	sort_three_reverse(t_stack **stack);
 
 int		get_min(t_stack **stack);
 void	quick_sort(int *array, int start, int end);
