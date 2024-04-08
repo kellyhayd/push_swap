@@ -12,34 +12,43 @@
 
 #include "push_swap.h"
 
-static void	swap(t_stack **stack)
+void	swap(t_stack **stack)
 {
-	int	num_tmp;
-	int	idx_tmp;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
-	num_tmp = (*stack)->num;
-	idx_tmp = (*stack)->idx;
-	(*stack)->num = (*stack)->next->num;
-	(*stack)->idx = (*stack)->next->idx;
-	(*stack)->next->num = num_tmp;
-	(*stack)->next->idx = idx_tmp;
+	if (!*stack || !(*stack)->next)
+		return;
+	first = (*stack)->next;
+	second = *stack;
+	third = (*stack)->next->next;
+	first->next = second;
+	second->next = third;
+	*stack = first;
 }
 
-void	sa(t_stack **stack)
+int	sa(t_stack **stack)
 {
-	write(1, "sa\n", 3);
+	if (!ft_write(1, "sa\n", 3))
+		return (0);
 	swap(stack);
+	return (1);
 }
 
-void	sb(t_stack **stack)
+int	sb(t_stack **stack)
 {
-	write(1, "sb\n", 3);
+	if (!ft_write(1, "sb\n", 3))
+		return (0);
 	swap(stack);
+	return (1);
 }
 
-void	s_stack(t_stack **stack_a, t_stack **stack_b)
+int	ss(t_stack **a, t_stack **b)
 {
-	write(1, "ss\n", 3);
-	swap(stack_a);
-	swap(stack_b);
+	if (!ft_write(1, "ss\n", 3))
+		return (0);
+	swap(a);
+	swap(b);
+	return (1);
 }

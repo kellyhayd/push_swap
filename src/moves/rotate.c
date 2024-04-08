@@ -12,39 +12,46 @@
 
 #include "push_swap.h"
 
-static void	rotate(t_stack **stack)
+void rotate(t_stack **stack)
 {
-	t_stack	*tmp;
-	t_stack	*last;
-
-	if (lstsize(*stack) >= 2)
+	t_stack *last;
+	
+	if (!*stack || !(*stack)->next)
+		return;
+	if (!(*stack)->next->next)
+		swap(stack);
+	else
 	{
-		tmp = *stack;
-		last = lstlast(*stack);
+		last = (*stack)->next;
+		while (last->next)
+			last = last->next;
+		last->next = *stack;
 		*stack = (*stack)->next;
-		(*stack)->prev = NULL;
-		last->next = tmp;
-		tmp->prev = last;
-		tmp->next = NULL;
-		update_idx(stack);
+		last->next->next = NULL;
 	}
 }
 
-void	ra(t_stack **stack)
+int ra(t_stack **stack)
 {
-	write(1, "ra\n", 3);
+	if (!ft_write(1, "ra\n", 3))
+		return (0);
 	rotate(stack);
+	return (1);
 }
 
-void	rb(t_stack **stack)
+int rb(t_stack **stack)
 {
-	write(1, "rb\n", 3);
+	if (!ft_write(1, "rb\n", 3))
+		return (0);
 	rotate(stack);
+	return (1);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+int rr(t_stack **a, t_stack **b)
 {
-	write(1, "rr\n", 3);
-	rotate(stack_a);
-	rotate(stack_b);
+	if (!ft_write(1, "rr\n", 3))
+		return (0);
+	rotate(a);
+	rotate(b);
+	return (1);
 }
