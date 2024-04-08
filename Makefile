@@ -44,6 +44,35 @@ SRC		= $(addprefix $(SRCS_PATH), \
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
+# ------------------------------------------------------ BONUS FILES
+
+NAME_BONUS		= checker
+SRCS_BONUS	= $(addprefix $(SRCS_PATH),\
+			./init/validation.c \
+			./init/process_args.c \
+			./moves/swap.c \
+			./moves/push.c \
+			./moves/reverse_rotate.c \
+			./moves/rotate.c \
+			./algorithm/algorithm_2-3.c \
+			./algorithm/algorithm_4-5.c \
+			./algorithm/algorithm_big.c \
+			./algorithm/define_moves.c \
+			./algorithm/execute.c \
+			./algorithm/find_position.c \
+			./utils/ft_utils.c \
+			./utils/init.c \
+			./utils/list.c \
+			./bonus/checker.c)
+
+OBJS_BONUS		= ${SRCS_BONUS:%.c=%.o}
+
+ifdef WITH_BONUS
+	NAME		= $(NAME_BONUS)
+	SRCS		= $(SRCS_BONUS)
+	OBJS		= $(OBJS_BONUS)
+endif
+
 # ------------------------------------------------------ COMMANDS
 
 MKDIR	:= mkdir -p
@@ -99,6 +128,10 @@ $(LIBFT):
 
 $(BUILD_DIR)%.o: %.c
 	$(call comp_objs)
+
+bonus:
+	@echo "$(CYAN)Compiling the checker!!\n $(RESET)"
+	$(MAKE) WITH_BONUS=TRUE
 
 clean:
 	$(RM) $(BUILD_DIR)

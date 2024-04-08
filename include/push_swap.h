@@ -52,6 +52,10 @@ int	lstsize(t_stack *lst);
 int parse(t_stack **stack, int argc, const char **argv);
 int sort(t_stack **a);
 
+void push(t_stack **dst, t_stack **src);
+void reverse_rotate(t_stack **stack);
+void	swap(t_stack **stack);
+void rotate(t_stack **stack);
 int pa(t_stack **a, t_stack **b);
 int pb(t_stack **a, t_stack **b);
 int rra(t_stack **stack);
