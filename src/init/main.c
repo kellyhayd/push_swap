@@ -12,29 +12,24 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int main(int argc, const char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_data	*data;
-	char	**array;
+	t_stack *stack;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	array = NULL;
-	data = ft_calloc(sizeof(t_data), 1);
-	if (argc <= 1)
-		return (ft_error("Error\n"), 0);
-	else if (argc > 2)
-		array = args_individuals(argv);
-	else if (argc == 2)
-		array = args_string(argv);
-	if (is_ordered(array))
+	stack = NULL;
+	if (argc < 2)
 		return (0);
-	data->asize_now = stack_create(array, &stack_a);
-	def_sort(&stack_a, &stack_b, array, data);
-	free_array(array);
-	lstclear(&stack_a, free);
-	free(data);
+	if (!validate_args(argv, argc))
+		ft_error("Error\n");
+	if (is_ordered(argv, argc))
+		return (0);
+	if (!parse(&stack, argc, argv))
+		return (1);
+	if (!sort(&stack))
+	{
+		stack_free(stack);
+		return (1);
+	}
+	stack_free(stack);
 	return (0);
 }

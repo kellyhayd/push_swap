@@ -12,43 +12,42 @@
 
 #include "push_swap.h"
 
-int	is_ordered(char **argv)
+int	is_ordered(const char **argv, int argc)
 {
 	int	i;
 
-	i = 0;
-	while (argv[i] && argv[i + 1])
+	i = 1;
+	while ((i + 1) < argc)
 	{
-		if (argv[i + 1] && ft_atoi(argv[i + 1]) < ft_atoi(argv[i]))
+		if (ft_atoi(argv[i + 1]) < ft_atoi(argv[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	is_double_or_over_limit(char **argv)
+void	is_double_or_over_limit(const char **argv, int argc)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[i])
+	while (i < argc)
 	{
 		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
-			return (ft_error("Error\n"), 1);
-		j = 0;
+			ft_error("Error\n");
+		j = 1;
 		while (j < i)
 		{
 			if (ft_atol(argv[j]) == ft_atol(argv[i]))
-				return (ft_error("Error\n"), 1);
+				ft_error("Error\n");
 			j++;
 		}
 		i++;
 	}
-	return (0);
 }
 
-int	is_only_space(char *str)
+int	is_only_space(const char *str)
 {
 	int	i;
 	int	ok;
@@ -66,13 +65,13 @@ int	is_only_space(char *str)
 	return (0);
 }
 
-int	validate_args(char **argv)
+int	validate_args(const char **argv, int argc)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (argv[i])
+	i = 1;
+	while (i < argc)
 	{
 		if (is_only_space(argv[i]))
 			return (0);
@@ -90,7 +89,6 @@ int	validate_args(char **argv)
 		}
 		i++;
 	}
-	if (is_double_or_over_limit(argv))
-		return (0);
+	is_double_or_over_limit(argv, argc);
 	return (1);
 }

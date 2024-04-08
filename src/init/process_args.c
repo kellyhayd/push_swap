@@ -12,34 +12,53 @@
 
 #include "push_swap.h"
 
-char	**args_string(char **argv)
+// char	**args_string(char **argv)
+// {
+// 	char	**array;
+
+// 	array = NULL;
+// 	array = ft_split((const char *)argv[1], ' ');
+// 	if (!array || array[0] == NULL)
+// 	{
+// 		free_array(array);
+// 		return (ft_error("Error\n"), NULL);
+// 	}
+// 	if (!validate_args(array))
+// 	{
+// 		free_array(array);
+// 		return (ft_error("Error\n"), NULL);
+// 	}
+// 	return (array);
+// }
+
+// char	**args_individuals(char **argv)
+// {
+// 	char	**array;
+
+// 	array = NULL;
+// 	if (!validate_args(argv + 1))
+// 		return (ft_error("Error\n"), NULL);
+// 	array = copy_argv(argv + 1);
+// 	if (!array || !array[0])
+// 		free(array);
+// 	return (array);
+// }
+
+int parse(t_stack **stack, int argc, const char **argv)
 {
-	char	**array;
+	int i;
+	int ok;
+	int	num;
 
-	array = NULL;
-	array = ft_split((const char *)argv[1], ' ');
-	if (!array || array[0] == NULL)
+	i = 1;
+	ok = 1;
+	while (ok && i < argc)
 	{
-		free_array(array);
-		return (ft_error("Error\n"), NULL);
+		num = ft_atoi(argv[i]);
+		ok = stack_addlast(stack, num);
+		i++;
 	}
-	if (!validate_args(array))
-	{
-		free_array(array);
-		return (ft_error("Error\n"), NULL);
-	}
-	return (array);
-}
-
-char	**args_individuals(char **argv)
-{
-	char	**array;
-
-	array = NULL;
-	if (!validate_args(argv + 1))
-		return (ft_error("Error\n"), NULL);
-	array = copy_argv(argv + 1);
-	if (!array || !array[0])
-		free(array);
-	return (array);
+	if (!ok && *stack)
+		stack_free(*stack);
+	return (ok);
 }
