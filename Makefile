@@ -26,23 +26,21 @@ LIBFT_DIR	:= ./libft/
 
 SRC		= $(addprefix $(SRCS_PATH), \
 			./init/main.c \
-			./init/init_utils.c \
-			./init/lst_utils.c \
-			./init/stack_format.c \
 			./init/validation.c \
 			./init/process_args.c \
-			./moves/moves_utils.c \
 			./moves/swap.c \
 			./moves/push.c \
 			./moves/reverse_rotate.c \
 			./moves/rotate.c \
-			./algorithm2/algorithm_2-3.c \
-			./algorithm2/algorithm_4-5.c \
-			./algorithm2/algorithm_10.c \
-			./algorithm2/algorithm_100.c \
-			./algorithm2/quick_sort.c \
-			./algorithm2/sort.c \
-			./algorithm2/descending_order.c)
+			./algorithm/algorithm_2-3.c \
+			./algorithm/algorithm_4-5.c \
+			./algorithm/algorithm_big.c \
+			./algorithm/define_moves.c \
+			./algorithm/execute.c \
+			./algorithm/find_position.c \
+			./utils/ft_utils.c \
+			./utils/init.c \
+			./utils/list.c)
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
@@ -55,7 +53,6 @@ CC		= cc
 # ------------------------------------------------------ FLAGS
 
 CFLAGS		= -Wall -Wextra -Werror -g3
-# CFLAGS		= -g3
 DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
 LDFLAGS		= -ldl -lglfw -pthread
