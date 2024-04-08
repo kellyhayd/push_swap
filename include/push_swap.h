@@ -13,6 +13,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# define NO_ACTION 0
+# define RA 1
+# define RRA 2
+# define RB 3
+# define RRB 4
+# define RR 5
+# define RRR 6
+# define PB 7
+
 # include "libft.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -20,91 +29,64 @@
 
 typedef struct s_stack
 {
-	int				num;
-	int				idx;
-	int				cost;
-	int				direction;
-	struct s_stack	*immediate_b;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+	int value;
+	struct s_stack *next;
+} t_stack;
 
-typedef struct s_data
+typedef struct step
 {
-	int	div;
-	int	immediate;
-	int	num_max;
-	int	num_now;
-	int	idx_now;
-	int	size_init;
-	int	asize_now;
-	int	bsize_now;
-	int	def_div;
-	int	tmp_top;
-	int	tmp_tail;
-	int	direction;
-	int	*args;
-}	t_data;
+	int type;
+	int times;
+} t_step;
 
-//--------------------------------------- Validate
+typedef struct move
+{
+	int cost;
+	t_step steps[5];
+} t_move;
 
-int		validate_args(char **argv);
+void stack_free(t_stack *stack);
+int stack_addlast(t_stack **stack, int value);
+int	lstsize(t_stack *lst);
 
-//--------------------------------------- Format
+int parse(t_stack **stack, int argc, const char **argv);
+int sort(t_stack **a);
 
-/*
- * @brief Creates a linked list from an array of strings
- * that result from the given arguments
- *
- * @param array A pointer to a null-terminated array of strings.
- * Each string will be an element in the created linked list
- *
- * @result A pointer to the first element of the newly created linked list
- *
- * @detail This function iterates through the provided array and creates
- * a new (node) for each string using ft_lstnew. If the list is empty,
- * the first element becomes the head. Otherwise, it is appended to
- * the end of the existing list
- */
-int		stack_create(char **array, t_stack **stack);
+int pa(t_stack **a, t_stack **b);
+int pb(t_stack **a, t_stack **b);
+int rra(t_stack **stack);
+int rrb(t_stack **stack);
+int rrr(t_stack **a, t_stack **b);
+int ra(t_stack **stack);
+int rb(t_stack **stack);
+int rr(t_stack **a, t_stack **b);
+void swap(t_stack **stack);
+int sa(t_stack **stack);
+int sb(t_stack **stack);
+int ss(t_stack **a, t_stack **b);
 
-//--------------------------------------- Linked List Functions
+t_move move_rr_pb(int i, int j);
+t_move move_rrr_pb(int i, int j);
+t_move move_ra_rrb_pb(int i, int j);
+t_move move_rra_rb_pb(int i, int j);
 
-t_stack	*lstlast(t_stack *lst);
-t_stack	*lstnew(int content, int idx);
-int		lstsize(t_stack *lst);
-void	lstclear(t_stack **lst, void (*del)(void*));
+int find_max_index(const t_stack *stack);
+int find_greatest_lower_than_index(const t_stack *stack, int value);
 
-char	**copy_argv(char **argv);
-void	free_array(char **array);
+t_move best_move_to_b(t_stack **a, int a_len, t_stack **b, int b_len);
+int execute_step(t_step step, t_stack **a, t_stack **b);
+int execute_steps(const t_step *steps, t_stack **a, t_stack **b);
 
-char	**args_string(char **argv);
-char	**args_individuals(char **argv);
+int ft_write(int fd, const char *str, size_t nbytes);
+int	get_min(t_stack **stack);
+int ft_min_int(int x, int y);
 
-int		is_ordered(char **argv);
+int	validate_args(const char **argv, int argc);
+int	is_ordered(const char **argv, int argc);
 
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack);
-void	rrb(t_stack **stack);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack);
-void	rb(t_stack **stack);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	sa(t_stack **stack);
-void	sb(t_stack **stack);
-void	update_idx(t_stack **stack);
-
-void	def_sort(t_stack **stack_a, t_stack **stack_b, char **arr, t_data *cur);
+void	sort_three(t_stack **stack);
 void	sort_two(t_stack **stack);
-void	sort_three(t_stack **stack, t_data *cur);
-void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *cur);
-void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *cur);
-void	sort_ten(t_stack **stack_a, t_stack **stack_b, t_data *cur);
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b, t_data *current);
-void	sort_three_reverse(t_stack **stack);
-
-int		get_min(t_stack **stack);
-void	quick_sort(int *array, int start, int end);
+void	sort_four(t_stack **stack_a, t_stack **stack_b);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
 
 #endif
