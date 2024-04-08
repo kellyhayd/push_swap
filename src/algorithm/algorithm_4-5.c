@@ -12,66 +12,58 @@
 
 #include "push_swap.h"
 
-void	sort_four(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	sort_four(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
 	int	needs_pa;
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (data->asize_now == 4)
+	if ((*stack_a)->next->value == min)
+		sa(stack_a);
+	else if ((*stack_a)->next->next->value == min)
 	{
-		if ((*stack_a)->next->num == min)
-			sa(stack_a);
-		else if ((*stack_a)->next->next->num == min)
-		{
-			ra(stack_a);
-			ra(stack_a);
-		}
-		else if ((*stack_a)->next->next->next->num == min)
-			rra(stack_a);
-		pb(stack_a, stack_b);
-		needs_pa = 1;
+		ra(stack_a);
+		ra(stack_a);
 	}
-	data->asize_now = lstsize(*stack_a);
-	sort_three(stack_a, data);
+	else if ((*stack_a)->next->next->next->value == min)
+		rra(stack_a);
+	pb(stack_a, stack_b);
+	needs_pa = 1;
+	sort_three(stack_a);
 	if (needs_pa)
 		pa(stack_a, stack_b);
 }
 
 void	move_five(t_stack **stack_a, t_stack **stack_b, int min)
 {
-	if ((*stack_a)->next->num == min)
+	if ((*stack_a)->next->value == min)
 		sa(stack_a);
-	else if ((*stack_a)->next->next->num == min)
+	else if ((*stack_a)->next->next->value == min)
 	{
 		ra(stack_a);
 		ra(stack_a);
 	}
-	else if ((*stack_a)->next->next->next->num == min)
+	else if ((*stack_a)->next->next->next->value == min)
 	{
 		rra(stack_a);
 		rra(stack_a);
 	}
-	else if ((*stack_a)->next->next->next->next->num == min)
+	else if ((*stack_a)->next->next->next->next->value == min)
 		rra(stack_a);
 	pb(stack_a, stack_b);
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
 	int	needs_pa;
 
 	min = get_min(stack_a);
 	needs_pa = 0;
-	if (data->asize_now == 5)
-	{
-		move_five(stack_a, stack_b, min);
-		needs_pa = 1;
-	}
-	data->asize_now = lstsize(*stack_a);
-	sort_four(stack_a, stack_b, data);
+	move_five(stack_a, stack_b, min);
+	needs_pa = 1;
+	sort_four(stack_a, stack_b);
 	if (needs_pa)
 		pa(stack_a, stack_b);
 }
