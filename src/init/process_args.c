@@ -6,16 +6,16 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 10:51:32 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 10:56:40 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:17:09 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int parse(t_stack **stack, int argc, const char **argv)
+int	parse(t_stack **stack, int argc, const char **argv)
 {
-	int i;
-	int ok;
+	int	i;
+	int	ok;
 	int	num;
 
 	i = 1;

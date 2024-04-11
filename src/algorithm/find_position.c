@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_100.c                                    :+:      :+:    :+:   */
+/*   find_position.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:13:51 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/03 15:53:58 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:20:16 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_max_index(const t_stack *stack)
+int	find_max_index(const t_stack *stack)
 {
-	int i;
-	int max_index;
-	int max_value;
+	int	i;
+	int	max_index;
+	int	max_value;
 
 	max_index = 0;
 	i = 0;
@@ -33,11 +33,11 @@ int find_max_index(const t_stack *stack)
 	return (max_index);
 }
 
-int find_greatest_lower_than_index(const t_stack *stack, int value)
+int	find_greatest_lower_than_index(const t_stack *stack, int value)
 {
-	int i;
-	int greatest_idx;
-	int greatest_value;
+	int	i;
+	int	greatest_idx;
+	int	greatest_value;
 
 	if (!stack)
 		return (0);

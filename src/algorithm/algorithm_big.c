@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_10.c                                     :+:      :+:    :+:   */
+/*   algorithm_big.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:43:37 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 11:14:35 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:19:27 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int move_all_to_b(t_stack **a, int *a_len, t_stack **b, int *b_len)
+int	move_all_to_b(t_stack **a, int *a_len, t_stack **b, int *b_len)
 {
-	t_move move;
+	t_move	move;
 
 	while (*a)
 	{
@@ -27,11 +27,11 @@ int move_all_to_b(t_stack **a, int *a_len, t_stack **b, int *b_len)
 	return (1);
 }
 
-int move_max_in_b_to_head(t_stack **a, t_stack **b, int b_len)
+int	move_max_in_b_to_head(t_stack **a, t_stack **b, int b_len)
 {
-	int b_idx;
-	t_step step;
-	
+	int		b_idx;
+	t_step	step;
+
 	b_idx = find_max_index(*b);
 	if (b_idx < b_len - b_idx)
 	{
@@ -67,14 +67,15 @@ void	define_sort_small(t_stack **a, t_stack **b)
 		sort_two(a);
 }
 
-int sort(t_stack **a)
+int	sort(t_stack **a)
 {
-	t_stack *b;
-	int a_len;
-	int b_len;
-	int ok;
+	t_stack	*b;
+	int		a_len;
+	int		b_len;
+	int		ok;
 
 	b = NULL;
+	ok = 0;
 	a_len = lstsize(*a);
 	b_len = lstsize(b);
 	if (a_len <= 5)
@@ -82,7 +83,8 @@ int sort(t_stack **a)
 	else
 	{
 		ok = move_all_to_b(a, &a_len, &b, &b_len);
-		ok = ok && move_max_in_b_to_head(a, &b, b_len);
+		if (ok)
+			ok = move_max_in_b_to_head(a, &b, b_len);
 		while (ok && b)
 			ok = pa(a, &b);
 		if (!ok)

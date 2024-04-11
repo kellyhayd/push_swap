@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:20 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/27 10:40:28 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:25:40 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void stack_free(t_stack *stack)
+void	stack_free(t_stack *stack)
 {
-	t_stack *next;
+	t_stack	*next;
 
 	while (stack)
 	{
@@ -24,10 +24,10 @@ void stack_free(t_stack *stack)
 	}
 }
 
-int stack_addlast(t_stack **stack, int value)
+int	stack_addlast(t_stack **stack, int value)
 {
-	t_stack *new;
-	t_stack *i;
+	t_stack	*new;
+	t_stack	*i;
 
 	new = (t_stack *) malloc(sizeof(t_stack));
 	if (!new)
@@ -36,7 +36,7 @@ int stack_addlast(t_stack **stack, int value)
 	new->next = NULL;
 	if (!*stack)
 		*stack = new;
-	else 
+	else
 	{
 		i = *stack;
 		while (i->next)

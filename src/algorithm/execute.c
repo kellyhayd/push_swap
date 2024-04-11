@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:31:58 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/03 12:03:43 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:22:22 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_move move_min(t_move move1, t_move move2)
+static t_move	move_min(t_move move1, t_move move2)
 {
 	if (move1.cost < move2.cost)
-		return move1;
-	return move2;
+		return (move1);
+	return (move2);
 }
 
-t_move best_move_to_b(t_stack **a, int a_len, t_stack **b, int b_len)
+t_move	best_move_to_b(t_stack **a, int a_len, t_stack **b, int b_len)
 {
-	t_stack *it;
-	t_move best;
-	t_move move;
-	int a_idx;
-	int b_idx;
+	t_stack	*it;
+	t_move	best;
+	t_move	move;
+	int		a_idx;
+	int		b_idx;
 
 	it = *a;
 	a_idx = 0;
@@ -48,29 +48,29 @@ t_move best_move_to_b(t_stack **a, int a_len, t_stack **b, int b_len)
 	return (best);
 }
 
-int execute_step(t_step step, t_stack **a, t_stack **b)
+int	execute_step(t_step step, t_stack **a, t_stack **b)
 {
 	if (step.type == RA)
-		return ra(a);
+		return (ra(a));
 	else if (step.type == RR)
-		return rr(a, b);
+		return (rr(a, b));
 	else if (step.type == RB)
-		return rb(b);
+		return (rb(b));
 	else if (step.type == RRA)
-		return rra(a);
+		return (rra(a));
 	else if (step.type == RRR)
-		return rrr(a, b);
+		return (rrr(a, b));
 	else if (step.type == RRB)
-		return rrb(b);
+		return (rrb(b));
 	else if (step.type == PB)
-		return pb(a, b);
+		return (pb(a, b));
 	return (1);
 }
 
-int execute_steps(const t_step *steps, t_stack **a, t_stack **b)
+int	execute_steps(const t_step *steps, t_stack **a, t_stack **b)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	while (steps[i].type != NO_ACTION)

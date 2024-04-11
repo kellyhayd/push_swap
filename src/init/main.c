@@ -6,15 +6,15 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:15 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/01 15:06:17 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:16:59 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, const char **argv)
+int	main(int argc, const char **argv)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = NULL;
 	if (argc < 2)

@@ -63,7 +63,8 @@ SRCS_BONUS	= $(addprefix $(SRCS_PATH),\
 			./utils/ft_utils.c \
 			./utils/init.c \
 			./utils/list.c \
-			./bonus/checker.c)
+			./bonus/checker.c \
+			./bonus/utils.c)
 
 OBJS_BONUS		= ${SRCS_BONUS:%.c=%.o}
 
@@ -82,7 +83,6 @@ CC		= cc
 # ------------------------------------------------------ FLAGS
 
 CFLAGS		= -Wall -Wextra -Werror -g3
-DFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(INCS_PATH) -MMD -MP
 LDFLAGS		= -ldl -lglfw -pthread
 
@@ -130,7 +130,7 @@ $(BUILD_DIR)%.o: %.c
 	$(call comp_objs)
 
 bonus:
-	@echo "$(CYAN)Compiling the checker!!\n $(RESET)"
+	@echo "$(CYAN)Compiling the checker!! $(RESET)"
 	$(MAKE) WITH_BONUS=TRUE
 
 clean:

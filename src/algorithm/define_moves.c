@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   define_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:23 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 11:28:25 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:17:43 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int steps_cost(const t_step *steps)
+static int	steps_cost(const t_step *steps)
 {
-	int i;
-	int cost;
+	int	i;
+	int	cost;
 
 	cost = 0;
 	i = 0;
@@ -27,9 +27,9 @@ static int steps_cost(const t_step *steps)
 	return (cost);
 }
 
-t_move move_rr_pb(int a_times, int b_times)
+t_move	move_rr_pb(int a_times, int b_times)
 {
-	t_move move;
+	t_move	move;
 
 	move.steps[0].type = RR;
 	move.steps[0].times = ft_min_int(a_times, b_times);
@@ -45,9 +45,9 @@ t_move move_rr_pb(int a_times, int b_times)
 	return (move);
 }
 
-t_move move_rrr_pb(int a_times, int b_times)
+t_move	move_rrr_pb(int a_times, int b_times)
 {
-	t_move move;
+	t_move	move;
 
 	move.steps[0].type = RRR;
 	move.steps[0].times = ft_min_int(a_times, b_times);
@@ -63,9 +63,9 @@ t_move move_rrr_pb(int a_times, int b_times)
 	return (move);
 }
 
-t_move move_ra_rrb_pb(int a_times, int b_times)
+t_move	move_ra_rrb_pb(int a_times, int b_times)
 {
-	t_move move;
+	t_move	move;
 
 	move.steps[0].type = RA;
 	move.steps[0].times = a_times;
@@ -79,9 +79,9 @@ t_move move_ra_rrb_pb(int a_times, int b_times)
 	return (move);
 }
 
-t_move move_rra_rb_pb(int a_times, int b_times)
+t_move	move_rra_rb_pb(int a_times, int b_times)
 {
-	t_move move;
+	t_move	move;
 
 	move.steps[0].type = RRA;
 	move.steps[0].times = a_times;

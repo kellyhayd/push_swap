@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:01:42 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/03/25 11:25:45 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:24:28 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_stack **stack)
 	t_stack	*third;
 
 	if (!*stack || !(*stack)->next)
-		return;
+		return ;
 	first = (*stack)->next;
 	second = *stack;
 	third = (*stack)->next->next;
