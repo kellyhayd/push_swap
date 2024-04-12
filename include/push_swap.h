@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:03:57 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/11 15:16:12 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:24:04 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_move	best_move_to_b(t_stack **a, int a_len, t_stack **b, int b_len);
 int		execute_step(t_step step, t_stack **a, t_stack **b);
 int		execute_steps(const t_step *steps, t_stack **a, t_stack **b);
 
-int		ft_write(int fd, const char *str, size_t nbytes);
+// int		ft_write(int fd, const char *str, size_t nbytes);
 int		get_min(t_stack **stack);
 int		ft_min_int(int x, int y);
 

@@ -6,38 +6,29 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:00 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/11 15:25:25 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:47:06 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	new_atoi(int *result, const char *str)
+int	next_move(char *move)
 {
-	int	sign;
-	int	tmp;
+	ssize_t	nbytes;
 
-	if (!str || !str[0])
+	move[0] = '\0';
+	nbytes = read(0, move, 3);
+	if (nbytes < 3)
+		return (nbytes == 0);
+	if (move[2] == '\n')
+	{
+		move[3] = '\0';
+		return (1);
+	}
+	nbytes = read(0, &move[3], 1);
+	if (nbytes < 1)
 		return (0);
-	sign = 1;
-	if (str[0] == '-' || str[0] == '+')
-	{
-		if (str[0] == '-')
-			sign = -1;
-		str++;
-	}
-	*result = 0;
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		tmp = (*result) * 10 + *str - '0';
-		if (tmp < (*result))
-			return (0);
-		(*result) = tmp;
-		str++;
-	}
-	*result *= sign;
+	move[4] = '\0';
 	return (1);
 }
 

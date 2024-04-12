@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:01:42 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/11 15:24:28 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:22:43 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	swap(t_stack **stack)
 
 int	sa(t_stack **stack)
 {
-	if (!ft_write(1, "sa\n", 3))
+	if (!ft_putstr("sa\n"))
 		return (0);
 	swap(stack);
 	return (1);
@@ -38,7 +38,7 @@ int	sa(t_stack **stack)
 
 int	sb(t_stack **stack)
 {
-	if (!ft_write(1, "sb\n", 3))
+	if (!ft_putstr("sb\n"))
 		return (0);
 	swap(stack);
 	return (1);
@@ -46,7 +46,7 @@ int	sb(t_stack **stack)
 
 int	ss(t_stack **a, t_stack **b)
 {
-	if (!ft_write(1, "ss\n", 3))
+	if (!ft_putstr("ss\n"))
 		return (0);
 	swap(a);
 	swap(b);

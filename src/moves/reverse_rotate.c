@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:03:01 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/11 15:22:55 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:25:10 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	reverse_rotate(t_stack **stack)
 
 int	rra(t_stack **stack)
 {
-	if (!ft_write(1, "rra\n", 4))
+	if (!ft_putstr("rra\n"))
 		return (0);
 	reverse_rotate(stack);
 	return (1);
@@ -46,7 +46,7 @@ int	rra(t_stack **stack)
 
 int	rrb(t_stack **stack)
 {
-	if (!ft_write(1, "rrb\n", 4))
+	if (!ft_putstr("rrb\n"))
 		return (0);
 	reverse_rotate(stack);
 	return (1);
@@ -54,7 +54,7 @@ int	rrb(t_stack **stack)
 
 int	rrr(t_stack **a, t_stack **b)
 {
-	if (!ft_write(1, "rrr\n", 4))
+	if (!ft_putstr("rrr\n"))
 		return (0);
 	reverse_rotate(a);
 	reverse_rotate(b);
