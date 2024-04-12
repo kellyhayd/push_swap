@@ -6,7 +6,7 @@
 /*   By: krocha-h <krocha-h@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:52:08 by krocha-h          #+#    #+#             */
-/*   Updated: 2024/04/12 16:45:26 by krocha-h         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:05:44 by krocha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,39 @@ int	parse_args(int argc, const char **argv, t_stack **a)
 		stack_free(*a);
 		return (0);
 	}
-	if (!non_duplicates(*a))
-	{
-		stack_free(*a);
-		return (0);
-	}
+	// if (!non_duplicates(*a))
+	// {
+	// 	stack_free(*a);
+	// 	return (0);
+	// }
 	return (1);
 }
+
+// int	main(int argc, const char **argv)
+// {
+// 	t_stack	*a;
+// 	t_stack	*b;
+
+// 	a = NULL;
+// 	b = NULL;
+// 	if (!parse_args(argc, argv, &a))
+// 		return (ft_error("Error\n"), 1);
+// 	if (!check(&a, &b))
+// 	{
+// 		stack_free(a);
+// 		stack_free(b);
+// 		return (ft_error("Error\n"), 1);
+// 	}
+// 	if (b)
+// 		ft_putstr("KO - b\n");
+// 	if (!is_sorted(a))
+// 		ft_putstr("KO - sorted\n");
+// 	else
+// 		ft_putstr("OK\n");
+// 	stack_free(a);
+// 	stack_free(b);
+// 	return (0);
+// }
 
 int	main(int argc, const char **argv)
 {
@@ -96,18 +122,16 @@ int	main(int argc, const char **argv)
 
 	a = NULL;
 	b = NULL;
+	if (argc < 2)
+		return (0);
+	if (!validate_args(argv, argc))
+		ft_error("Error\n");
+	if (is_ordered(argv, argc))
+		return (0);
 	if (!parse_args(argc, argv, &a))
-		return (ft_error("Error\n"), 1);
-	if (!check(&a, &b))
-	{
-		stack_free(a);
-		stack_free(b);
-		return (ft_error("Error\n"), 1);
-	}
+		ft_error("Error\n");
 	if (b)
-		ft_putstr("KO - b\n");
-	if (!is_sorted(a))
-		ft_putstr("KO - sorted\n");
+		ft_putstr("KO\n");
 	else
 		ft_putstr("OK\n");
 	stack_free(a);
