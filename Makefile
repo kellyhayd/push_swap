@@ -44,7 +44,7 @@ SRC		= $(addprefix $(SRCS_PATH), \
 LIBFT	:= $(LIBFT_DIR)libft.a
 OBJS	= $(SRC:%.c=$(BUILD_DIR)%.o)
 
-# ------------------------------------------------------ BONUS FILES
+# ------------------------------------------------------ BONUS FILES 
 
 NAME_BONUS		= checker
 SRCS_BONUS	= $(addprefix $(SRCS_PATH),\
@@ -140,6 +140,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	printf "$(CYAN)Executable push_swap $(DARK_GREEN)was deleted\n$(RESET)"
 
