@@ -66,7 +66,7 @@ SRCS_BONUS	= $(addprefix $(SRCS_PATH),\
 			./bonus/checker.c \
 			./bonus/utils.c)
 
-OBJS_BONUS		= ${SRCS_BONUS:%.c=%.o}
+OBJS_BONUS		= ${SRCS_BONUS:%.c=$(BUILD_DIR)%.o}
 
 ifdef WITH_BONUS
 	NAME		= $(NAME_BONUS)
@@ -130,15 +130,17 @@ $(BUILD_DIR)%.o: %.c
 	$(call comp_objs)
 
 bonus:
-	@echo "$(CYAN)Compiling the checker!! $(RESET)"
+	@echo "$(CYAN)Compiling the checker!!$(RESET)"
 	$(MAKE) WITH_BONUS=TRUE
 
 clean:
 	$(RM) $(BUILD_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	printf "$(CYAN)PUSH_SWAP $(DARK_GREEN)was cleaned up\n$(RESET)"
 
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
+	printf "$(CYAN)Executable push_swap $(DARK_GREEN)was deleted\n$(RESET)"
 
 re: fclean all
