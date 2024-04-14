@@ -75,7 +75,7 @@ int	sort(t_stack **a)
 	int		ok;
 
 	b = NULL;
-	ok = 0;
+	ok = 1;
 	a_len = lstsize(*a);
 	b_len = lstsize(b);
 	if (a_len <= 5)

@@ -62,9 +62,7 @@ int	check(t_stack **a, t_stack **b)
 	char	*move;
 
 	move = get_next_line(0);
-	if (move == NULL)
-		return (0);
-	while (move[0] != '\0')
+	while (move != NULL && move[0] != '\0')
 	{
 		if (!push_or_swap(move, a, b) && !rotate_or_reverse_rotate(move, a, b))
 		{
@@ -73,8 +71,6 @@ int	check(t_stack **a, t_stack **b)
 		}
 		free(move);
 		move = get_next_line(0);
-		if (move == NULL)
-			return (0);
 	}
 	free(move);
 	return (1);
@@ -98,8 +94,6 @@ int	main(int argc, const char **argv)
 		return (0);
 	if (!validate_args(argv, argc))
 		ft_error("Error\n");
-	if (is_ordered(argv, argc))
-		return (0);
 	if (!parse(&a, argc, argv) || !check(&a, &b))
 	{
 		stack_free(a);

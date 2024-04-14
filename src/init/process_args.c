@@ -22,7 +22,7 @@ int	parse(t_stack **stack, int argc, const char **argv)
 	ok = 1;
 	while (ok && i < argc)
 	{
-		num = ft_atoi(argv[i]);
+		num = ft_atol(argv[i]);
 		ok = stack_addlast(stack, num);
 		i++;
 	}
