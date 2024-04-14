@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int	push_or_swap(char *move, t_stack **a, t_stack **b)
 {
@@ -59,61 +59,33 @@ int	rotate_or_reverse_rotate(char *move, t_stack **a, t_stack **b)
 
 int	check(t_stack **a, t_stack **b)
 {
-	char	move[5];
-	int		ok;
+	char	*move;
 
-	ok = next_move(move);
-	while (move[0])
+	move = get_next_line(0);
+	if (move == NULL)
+		return (0);
+	while (move[0] != '\0')
 	{
 		if (!push_or_swap(move, a, b) && !rotate_or_reverse_rotate(move, a, b))
+		{
+			free(move);
 			return (0);
-		ok = next_move(move);
+		}
+		free(move);
+		move = get_next_line(0);
+		if (move == NULL)
+			return (0);
 	}
-	return (ok);
-}
-
-int	parse_args(int argc, const char **argv, t_stack **a)
-{
-	if (argc < 2)
-		return (0);
-	if (!parse(a, argc, argv))
-	{
-		stack_free(*a);
-		return (0);
-	}
-	// if (!non_duplicates(*a))
-	// {
-	// 	stack_free(*a);
-	// 	return (0);
-	// }
+	free(move);
 	return (1);
 }
 
-// int	main(int argc, const char **argv)
-// {
-// 	t_stack	*a;
-// 	t_stack	*b;
-
-// 	a = NULL;
-// 	b = NULL;
-// 	if (!parse_args(argc, argv, &a))
-// 		return (ft_error("Error\n"), 1);
-// 	if (!check(&a, &b))
-// 	{
-// 		stack_free(a);
-// 		stack_free(b);
-// 		return (ft_error("Error\n"), 1);
-// 	}
-// 	if (b)
-// 		ft_putstr("KO - b\n");
-// 	if (!is_sorted(a))
-// 		ft_putstr("KO - sorted\n");
-// 	else
-// 		ft_putstr("OK\n");
-// 	stack_free(a);
-// 	stack_free(b);
-// 	return (0);
-// }
+int	is_sorted(const t_stack *stack)
+{
+	while (stack && stack->next && stack->value < stack->next->value)
+		stack = stack->next;
+	return (!stack || !stack->next);
+}
 
 int	main(int argc, const char **argv)
 {
@@ -128,9 +100,13 @@ int	main(int argc, const char **argv)
 		ft_error("Error\n");
 	if (is_ordered(argv, argc))
 		return (0);
-	if (!parse_args(argc, argv, &a))
+	if (!parse(&a, argc, argv) || !check(&a, &b))
+	{
+		stack_free(a);
+		stack_free(b);
 		ft_error("Error\n");
-	if (b)
+	}
+	if (b || !is_sorted(a))
 		ft_putstr("KO\n");
 	else
 		ft_putstr("OK\n");

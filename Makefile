@@ -54,17 +54,8 @@ SRCS_BONUS	= $(addprefix $(SRCS_PATH),\
 			./moves/push.c \
 			./moves/reverse_rotate.c \
 			./moves/rotate.c \
-			./algorithm/algorithm_2-3.c \
-			./algorithm/algorithm_4-5.c \
-			./algorithm/algorithm_big.c \
-			./algorithm/define_moves.c \
-			./algorithm/execute.c \
-			./algorithm/find_position.c \
-			./utils/ft_utils.c \
-			./utils/init.c \
 			./utils/list.c \
-			./bonus/checker.c \
-			./bonus/utils.c)
+			./bonus/checker.c)
 
 OBJS_BONUS		= ${SRCS_BONUS:%.c=$(BUILD_DIR)%.o}
 
@@ -109,7 +100,6 @@ endef
 
 define comp_exe
 	$(COMP_EXE)
-	printf "$(CYAN)PUSH_SWAP-> $(RESET)$(PURPLE)is ready!\n$(RESET)"
 endef
 
 # ------------------------------------------------------ TARGETS
@@ -122,6 +112,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(call comp_exe)
+	printf "$(CYAN)PUSH_SWAP-> $(RESET)$(PURPLE)is ready!\n$(RESET)"
+
 
 $(LIBFT):
 	$(call comp_libft)

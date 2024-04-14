@@ -15,7 +15,6 @@
 int	parse(t_stack **stack, int argc, const char **argv)
 {
 	int	i;
-	// int	j;
 	int	ok;
 	int	num;
 
@@ -23,15 +22,9 @@ int	parse(t_stack **stack, int argc, const char **argv)
 	ok = 1;
 	while (ok && i < argc)
 	{
-		// j = 0;
-		if (ft_strncmp(argv[i], "", 1) == 0)
-			// return (0);
-		// // if (!ft_isdigit(argv[i][j]))
-		// 	return (0);
 		num = ft_atoi(argv[i]);
 		ok = stack_addlast(stack, num);
 		i++;
-		// j++;
 	}
 	if (!ok && *stack)
 		stack_free(*stack);
